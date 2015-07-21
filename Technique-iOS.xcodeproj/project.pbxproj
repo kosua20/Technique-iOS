@@ -7,6 +7,7 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		F410C2D21B5E993D00A1DB9F /* normal_water.png in Resources */ = {isa = PBXBuildFile; fileRef = F410C2D11B5E993D00A1DB9F /* normal_water.png */; };
 		F4E80E5F1B59B91A0081EFD7 /* SCNVector3Extensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = F4E80E5E1B59B91A0081EFD7 /* SCNVector3Extensions.swift */; };
 		F4ED44661B5D9D8500AD6B62 /* pass_plane.fsh in Resources */ = {isa = PBXBuildFile; fileRef = F4ED44641B5D9D8500AD6B62 /* pass_plane.fsh */; };
 		F4ED44671B5D9D8500AD6B62 /* pass_plane.vsh in Resources */ = {isa = PBXBuildFile; fileRef = F4ED44651B5D9D8500AD6B62 /* pass_plane.vsh */; };
@@ -35,6 +36,7 @@
 /* End PBXContainerItemProxy section */
 
 /* Begin PBXFileReference section */
+		F410C2D11B5E993D00A1DB9F /* normal_water.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = normal_water.png; sourceTree = "<group>"; };
 		F4E80E5E1B59B91A0081EFD7 /* SCNVector3Extensions.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SCNVector3Extensions.swift; sourceTree = "<group>"; };
 		F4ED44641B5D9D8500AD6B62 /* pass_plane.fsh */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.glsl; path = pass_plane.fsh; sourceTree = "<group>"; };
 		F4ED44651B5D9D8500AD6B62 /* pass_plane.vsh */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.glsl; path = pass_plane.vsh; sourceTree = "<group>"; };
@@ -103,6 +105,7 @@
 				F4EF9B1E1B59721E002887C4 /* pass1.vsh */,
 				F4EF9B1F1B59721E002887C4 /* pass1.fsh */,
 				F4EF9B231B59774D002887C4 /* pass2.vsh */,
+				F410C2D11B5E993D00A1DB9F /* normal_water.png */,
 				F4EF9B221B59774D002887C4 /* pass2.fsh */,
 				F4ED44651B5D9D8500AD6B62 /* pass_plane.vsh */,
 				F4ED44641B5D9D8500AD6B62 /* pass_plane.fsh */,
@@ -225,6 +228,7 @@
 				F4EF9B061B596D7A002887C4 /* LaunchScreen.xib in Resources */,
 				F4EF9B031B596D7A002887C4 /* Images.xcassets in Resources */,
 				F4EF9B251B59774D002887C4 /* pass2.vsh in Resources */,
+				F410C2D21B5E993D00A1DB9F /* normal_water.png in Resources */,
 				F4EF9AFC1B596D7A002887C4 /* art.scnassets in Resources */,
 				F4ED44661B5D9D8500AD6B62 /* pass_plane.fsh in Resources */,
 				F4EF9B201B59721E002887C4 /* pass1.vsh in Resources */,

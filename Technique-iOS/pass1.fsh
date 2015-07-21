@@ -7,17 +7,22 @@ varying vec2 uv;
 
 void main() {
     float depth = texture2D(sampler_depth_scene,uv).r;
-    if (depth == 1.0){
-        float depth_plane = texture2D(sampler_depth_plane,uv).r;
-        if (depth_plane == 1.0) {
+    float depth_plane = texture2D(sampler_depth_plane,uv).r;
+    if (depth == 1.0 && depth_plane == 1.0){
+       
             gl_FragColor = texture2D(sampler_color_scene,uv);
-        } else {
+           // gl_FragColor.rgb = vec3(0.0,0.0,1.0);
+    } else if (depth == 1.0){
             gl_FragColor = texture2D(sampler_color_plane,uv);
-        }
+            //gl_FragColor.rgb = vec3(1.0,0.0,0.0);
+    } else if (depth_plane <= depth){
+            gl_FragColor = texture2D(sampler_color_plane,uv);
+           // gl_FragColor.rgb = vec3(1.0,0.0,0.0);
     } else {
-        //Scene
-        gl_FragColor = texture2D(sampler_color_scene,uv);
+            gl_FragColor = texture2D(sampler_color_scene,uv);
+           // gl_FragColor.rgb = vec3(0.0,0.0,1.0);
     }
+    
    
     
     /*if(uv.y <0.5){

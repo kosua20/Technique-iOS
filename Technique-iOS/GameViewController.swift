@@ -22,6 +22,18 @@ class GameViewController: UIViewController {
         
         // create a new scene
         //
+        
+        let scnView = self.view as! SCNView
+        
+        if let path = NSBundle.mainBundle().pathForResource("Technique", ofType: "plist") {
+            if let dico1 = NSDictionary(contentsOfFile: path)  {
+                let dico = dico1 as! [String : AnyObject]
+                println(dico)
+                let technique = SCNTechnique(dictionary:dico)
+                scnView.technique = technique
+            }
+        }
+        
         let scene = SCNScene()
         let back = UIImage(named: "art.scnassets/grid_texture.png")
 
@@ -77,7 +89,7 @@ class GameViewController: UIViewController {
         ship.position.y += 2.0
         scene.rootNode.addChildNode(ship)
         // animate the 3d object
-        //ship.runAction(SCNAction.repeatActionForever(SCNAction.rotateByX(0, y: 2, z: 0, duration: 1)))
+        ship.runAction(SCNAction.repeatActionForever(SCNAction.rotateByX(0, y: 2, z: 0, duration: 10)))
         let sphere = SCNNode(geometry: SCNSphere(radius: 1.0))
         sphere.name = "sphere"
        
@@ -102,16 +114,18 @@ class GameViewController: UIViewController {
         let floor = SCNNode(geometry: SCNPlane(width: 28.0, height: 28.0))
         floor.eulerAngles.x = -3.14159*0.5
         let material2 = SCNMaterial()
-        let im_grid = UIImage(named: "art.scnassets/grid_texture.png")
+        material2.diffuse.contents = UIColor.redColor()
+       // let im_grid = UIImage(named: "art.scnassets/grid_texture.png")
         //material2.diffuse.contents = im_grid
         //material2.normal.contents =  SKTexture(image: im_grid!).textureByGeneratingNormalMap()
-        //floor.geometry?.materials = [material2]
+        //
+        material2.doubleSided = true
+        floor.geometry?.materials = [material2]
         floor.categoryBitMask = 0b10
         scene.rootNode.addChildNode(floor)
         
         floor.position = SCNVector3Make(0.0, 0.0, 0.0)
         // retrieve the SCNView
-        let scnView = self.view as! SCNView
         
         // set the scene to the view
         scnView.scene = scene
@@ -124,14 +138,7 @@ class GameViewController: UIViewController {
         scnView.pointOfView = cameraNode1
         // configure the view
         //scnView.backgroundColor = UIColor(red: 0.1, green: 0.1, blue: 0.3, alpha: 1.0)
-        if let path = NSBundle.mainBundle().pathForResource("Technique", ofType: "plist") {
-            if let dico1 = NSDictionary(contentsOfFile: path)  {
-                let dico = dico1 as! [String : AnyObject]
-                println(dico)
-                let technique = SCNTechnique(dictionary:dico)
-                scnView.technique = technique
-            }
-        }
+        
        
         
         let gesture = UIPanGestureRecognizer(target: self, action: "panDetected:");
@@ -178,8 +185,8 @@ class GameViewController: UIViewController {
         
     }
     
-    let kZoomMin : Float = 5.0
-    let kZoomMax : Float = 15.0
+    let kZoomMin : Float = 2.0
+    let kZoomMax : Float = 35.0
     let kMaxFactor : Float = 1.5
     
     func pinchDetected(gesture:UIPinchGestureRecognizer){

@@ -4,8 +4,8 @@
 <dict>
 	<key>sequence</key>
 	<array>
-		<string>pass_scene_rev</string>
 		<string>pass_scene</string>
+		<string>pass_scene_rev</string>
 		<string>pass_plane</string>
 		<string>pass_mix</string>
 	</array>
@@ -35,6 +35,8 @@
 			</dict>
 			<key>pointOfView</key>
 			<string>cam1</string>
+			<key>draw</key>
+			<string>DRAW_SCENE</string>
 			<key>colorStates</key>
 			<dict>
 				<key>clear</key>
@@ -42,8 +44,6 @@
 				<key>clearColor</key>
 				<string>0.1 0.1 0.3 1.0</string>
 			</dict>
-			<key>draw</key>
-			<string>DRAW_SCENE</string>
 			<key>excludeCategoryMask</key>
 			<string>2</string>
 			<key>inputs</key>
@@ -128,6 +128,13 @@
 		</dict>
 		<key>pass_plane</key>
 		<dict>
+			<key>colorStates</key>
+			<dict>
+				<key>clear</key>
+				<true/>
+				<key>clearColor</key>
+				<string>0.1 0.1 0.3 1.0</string>
+			</dict>
 			<key>program</key>
 			<string>pass_plane</string>
 			<key>outputs</key>
@@ -145,9 +152,24 @@
 				<string>mvp-symbol</string>
 				<key>colorSampler</key>
 				<string>color_rev</string>
+				<key>normalSampler</key>
+				<dict>
+					<key>target</key>
+					<string>normal_water</string>
+					<key>wrapS</key>
+					<string>repeat</string>
+					<key>wrapT</key>
+					<string>repeat</string>
+				</dict>
+				<key>a_texcoord</key>
+				<string>a_texcoord-symbol</string>
+				<key>u_time</key>
+				<string>u_time-symbol</string>
 			</dict>
 			<key>pointOfView</key>
 			<string>cam1</string>
+			<key>cullMode</key>
+			<string>none</string>
 			<key>stencilStates</key>
 			<dict>
 				<key>clear</key>
@@ -211,15 +233,10 @@
 			<key>semantic</key>
 			<string>modelViewProjectionTransform</string>
 		</dict>
-		<key>m-symbol</key>
+		<key>u_time-symbol</key>
 		<dict>
 			<key>semantic</key>
-			<string>modelTransform</string>
-		</dict>
-		<key>p-symbol</key>
-		<dict>
-			<key>semantic</key>
-			<string>projectionTransform</string>
+			<string>time</string>
 		</dict>
 		<key>a_normal-symbol</key>
 		<dict>
@@ -230,6 +247,18 @@
 		<dict>
 			<key>semantic</key>
 			<string>vertex</string>
+		</dict>
+		<key>a_texcoord-symbol</key>
+		<dict>
+			<key>semantic</key>
+			<string>texcoord</string>
+		</dict>
+		<key>normal_water</key>
+		<dict>
+			<key>type</key>
+			<string>sampler2D</string>
+			<key>image</key>
+			<string>normal_water.png</string>
 		</dict>
 	</dict>
 </dict>
