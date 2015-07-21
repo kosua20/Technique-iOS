@@ -148,6 +148,8 @@
 			<dict>
 				<key>a_position</key>
 				<string>a_position-symbol</string>
+				<key>size</key>
+				<string>size_screen</string>
 				<key>mvp</key>
 				<string>mvp-symbol</string>
 				<key>colorSampler</key>
@@ -259,6 +261,11 @@
 			<string>sampler2D</string>
 			<key>image</key>
 			<string>normal_water.png</string>
+		</dict>
+		<key>size_screen</key>
+		<dict>
+			<key>type</key>
+			<string>vec2</string>
 		</dict>
 	</dict>
 </dict>

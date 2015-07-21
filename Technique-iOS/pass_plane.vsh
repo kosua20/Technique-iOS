@@ -5,6 +5,6 @@ varying vec2 uv;
 
 void main() {
     gl_Position = mvp * a_position;
-    uv = (a_texcoord*4.0);
+    uv = (a_texcoord*2.0);
     
 }

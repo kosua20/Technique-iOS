@@ -30,6 +30,8 @@ class GameViewController: UIViewController {
                 let dico = dico1 as! [String : AnyObject]
                 println(dico)
                 let technique = SCNTechnique(dictionary:dico)
+                
+                technique?.setValue(NSValue(CGSize: CGSizeApplyAffineTransform(self.view.frame.size, CGAffineTransformMakeScale(2.0, 2.0))), forKeyPath: "size_screen")
                 scnView.technique = technique
             }
         }
