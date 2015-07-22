@@ -24,7 +24,7 @@ void main() {
            // gl_FragColor.rgb = vec3(0.0,0.0,1.0);
     }
     
-   
+    //gl_FragColor = texture2D(sampler_color_scene,uv);
     
     /*if(uv.y <0.5){
         gl_FragColor = texture2D(colorSampler2,vec2(uv.x,1.0-uv.y*2.0));

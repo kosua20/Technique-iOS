@@ -39,7 +39,7 @@ class GameViewController: UIViewController {
         let scene = SCNScene()
         let back = UIImage(named: "art.scnassets/grid_texture.png")
 
-        scene.background.contents = back      // create and add a camera to the scene
+       // scene.background.contents = back      // create and add a camera to the scene
       
         let fakeCameraNode = SCNNode()
         fakeCameraNode.name = "cam0"
@@ -88,35 +88,37 @@ class GameViewController: UIViewController {
         
         let scene2 = SCNScene(named: "art.scnassets/ship.dae")!
         let ship = scene2.rootNode.childNodeWithName("ship", recursively: true)!
-        ship.position.y += 2.0
+        ship.position.y += 1.5
+        ship.scale = SCNVector3(x: 0.8, y: 0.8, z: 0.8)
         scene.rootNode.addChildNode(ship)
         // animate the 3d object
         ship.runAction(SCNAction.repeatActionForever(SCNAction.rotateByX(0, y: 2, z: 0, duration: 10)))
-        let sphere = SCNNode(geometry: SCNSphere(radius: 1.0))
-        sphere.name = "sphere"
+        
+        let cube = SCNNode(geometry: SCNBox(width: 80.0, height: 80.0, length: 80.0, chamferRadius: 0.0))
+        //let scene3 = SCNScene(named: "art.scnassets/cube.dae")!
+        //let cube = scene3.rootNode.childNodeWithName("Cube", recursively: true)!
+        cube.position = SCNVector3Make(0.0, 0.0, 0.0)
+        cube.name = "Cube"
+        cube.categoryBitMask = 0b100
+        //cube.scale = SCNVector3(x: 15.0, y: 15.0, z: 15.0)
        
-        let material1 = SCNMaterial()
-        material1.diffuse.contents = UIColor.redColor()
-        sphere.geometry?.materials = [material1]
-        sphere.categoryBitMask = 0b10
-        //scene.rootNode.addChildNode(sphere)
+        var materials : [SCNMaterial] = []
+        for i in 1..<7 {
+            let material_cube = SCNMaterial()
+            material_cube.cullMode = SCNCullMode.Front
+            material_cube.doubleSided = false
+            material_cube.emission.contents = "art.scnassets/\(i).png"
+            material_cube.emission.intensity = 0.7
+            materials.append(material_cube)
+        }
         
-        let sphere2 = SCNNode(geometry: SCNSphere(radius: 2.0))
+        cube.geometry?.materials = materials
+        scene.rootNode.addChildNode(cube)
         
-        sphere2.geometry?.materials = [material1]
-        sphere2.categoryBitMask = 0b10
-        sphere2.position = SCNVector3Make(0.0, 3.2, 0.0)
-        //scene.rootNode.addChildNode(sphere2)
-        
-        let cube = SCNNode(geometry: SCNBox(width: 1.0, height: 1.1, length: 1.0, chamferRadius: 0.1))
-        cube.position = SCNVector3Make(2.0, 2.0, -0.5)
-        cube.name = "cube"
-        //scene.rootNode.addChildNode(cube)
-        
-        let floor = SCNNode(geometry: SCNPlane(width: 28.0, height: 28.0))
+        let floor = SCNNode(geometry: SCNPlane(width: 80.0, height: 80.0))
         floor.eulerAngles.x = -3.14159*0.5
         let material2 = SCNMaterial()
-        material2.diffuse.contents = UIColor.redColor()
+       // material2.diffuse.contents = UIColor(red: 0.0, green: 0.0, blue: 0.0, alpha: 0.0)
        // let im_grid = UIImage(named: "art.scnassets/grid_texture.png")
         //material2.diffuse.contents = im_grid
         //material2.normal.contents =  SKTexture(image: im_grid!).textureByGeneratingNormalMap()
@@ -189,7 +191,7 @@ class GameViewController: UIViewController {
     
     let kZoomMin : Float = 2.0
     let kZoomMax : Float = 35.0
-    let kMaxFactor : Float = 1.5
+    let kMaxFactor : Float = 1.15
     
     func pinchDetected(gesture:UIPinchGestureRecognizer){
         let camera: SCNNode = cameraSphere.childNodes.first as! SCNNode
