@@ -5,8 +5,8 @@
       <author>Blender User</author>
       <authoring_tool>Blender 2.74.0 commit date:2015-03-31, commit time:13:39, hash:000dfc0</authoring_tool>
     </contributor>
-    <created>2015-07-22T17:28:24</created>
-    <modified>2015-07-22T17:28:24</modified>
+    <created>2015-07-22T17:35:26</created>
+    <modified>2015-07-22T17:35:26</modified>
     <unit name="meter" meter="1"/>
     <up_axis>Z_UP</up_axis>
   </asset>
@@ -139,7 +139,7 @@
     <geometry id="Cube-mesh" name="Cube">
       <mesh>
         <source id="Cube-mesh-positions">
-          <float_array id="Cube-mesh-positions-array" count="24">1 1 -1 1 -1 -1 -1 -0.9999998 -1 -0.9999997 1 -1 1 0.9999995 1 0.9999994 -1.000001 1 -1 -0.9999997 1 -1 1 1</float_array>
+          <float_array id="Cube-mesh-positions-array" count="24">1.481807 1.481807 -1.481807 1.481807 -1.481807 -1.481807 -1.481807 -1.481807 -1.481807 -1.481806 1.481807 -1.481807 1.481808 1.481806 1.481807 1.481806 -1.481808 1.481807 -1.481807 -1.481806 1.481807 -1.481807 1.481807 1.481807</float_array>
           <technique_common>
             <accessor source="#Cube-mesh-positions-array" count="8" stride="3">
               <param name="X" type="float"/>
@@ -158,24 +158,14 @@
             </accessor>
           </technique_common>
         </source>
-        <source id="Cube-mesh-map-0">
-          <float_array id="Cube-mesh-map-0-array" count="72">0.3333333 0.3333336 0.3333333 0.6666668 0 0.6666667 0.6666667 1.39077e-7 0.6666666 0.3333334 0.3333333 0.3333336 0.3333334 1.29143e-7 0.3333333 0.3333334 0 0.3333333 1 0 1 0.3333333 0.6666668 0.3333333 0 0.6666667 0.3333333 0.6666668 0.3333333 1 0.3333333 0.6666668 0.3333333 0.3333336 0.6666666 0.3333334 0 0.3333334 0.3333333 0.3333336 0 0.6666667 0.3333334 0 0.6666667 1.39077e-7 0.3333333 0.3333336 0 0 0.3333334 1.29143e-7 0 0.3333333 0.6666668 0 1 0 0.6666668 0.3333333 0 1 0 0.6666667 0.3333333 1 0.6666667 0.6666667 0.3333333 0.6666668 0.6666666 0.3333334</float_array>
-          <technique_common>
-            <accessor source="#Cube-mesh-map-0-array" count="36" stride="2">
-              <param name="S" type="float"/>
-              <param name="T" type="float"/>
-            </accessor>
-          </technique_common>
-        </source>
         <vertices id="Cube-mesh-vertices">
           <input semantic="POSITION" source="#Cube-mesh-positions"/>
         </vertices>
         <polylist material="Material-material" count="12">
           <input semantic="VERTEX" source="#Cube-mesh-vertices" offset="0"/>
           <input semantic="NORMAL" source="#Cube-mesh-normals" offset="1"/>
-          <input semantic="TEXCOORD" source="#Cube-mesh-map-0" offset="2" set="0"/>
           <vcount>3 3 3 3 3 3 3 3 3 3 3 3 </vcount>
-          <p>0 0 0 3 1 1 2 2 2 5 3 3 6 4 4 7 5 5 1 6 6 5 3 7 4 7 8 2 2 9 6 4 10 5 3 11 2 2 12 3 1 13 7 5 14 7 5 15 3 1 16 0 0 17 1 6 18 0 0 19 2 2 20 4 7 21 5 3 22 7 5 23 0 0 24 1 6 25 4 7 26 1 6 27 2 2 28 5 3 29 6 4 30 2 2 31 7 5 32 4 7 33 7 5 34 0 0 35</p>
+          <p>0 0 3 1 2 2 5 3 6 4 7 5 1 6 5 3 4 7 2 2 6 4 5 3 2 2 3 1 7 5 7 5 3 1 0 0 1 6 0 0 2 2 4 7 5 3 7 5 0 0 1 6 4 7 1 6 2 2 5 3 6 4 2 2 7 5 4 7 7 5 0 0</p>
         </polylist>
       </mesh>
     </geometry>
@@ -188,11 +178,11 @@
         <instance_camera url="#Camera-camera"/>
       </node>
       <node id="Lamp" name="Lamp" type="NODE">
-        <matrix sid="transform">-0.2908646 -0.7711008 0.5663932 0.07624435 0.9551712 -0.1998834 0.2183912 0.005454063 -0.05518906 0.6045247 0.7946723 -0.096138 0 0 0 1</matrix>
+        <matrix sid="transform">-0.2908646 -0.7711008 0.5663932 4.076245 0.9551712 -0.1998834 0.2183912 1.005454 -0.05518906 0.6045247 0.7946723 5.903862 0 0 0 1</matrix>
         <instance_light url="#Lamp-light"/>
       </node>
       <node id="Cube" name="Cube" type="NODE">
-        <matrix sid="transform">3.221037 0 0 0 0 3.221037 0 0 0 0 3.221037 0 0 0 0 1</matrix>
+        <matrix sid="transform">1 0 0 0 0 1 0 0 0 0 1 0 0 0 0 1</matrix>
         <instance_geometry url="#Cube-mesh">
           <bind_material>
             <technique_common>

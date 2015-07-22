@@ -23,6 +23,7 @@ void main() {
             gl_FragColor = texture2D(sampler_color_scene,uv);
            // gl_FragColor.rgb = vec3(0.0,0.0,1.0);
     }
+   
     
     //gl_FragColor = texture2D(sampler_color_scene,uv);
     

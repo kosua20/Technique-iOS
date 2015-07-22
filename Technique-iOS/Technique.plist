@@ -38,19 +38,19 @@
 			<key>draw</key>
 			<string>DRAW_SCENE</string>
 			<key>excludeCategoryMask</key>
-			<string>6</string>
+			<string>2</string>
 			<key>inputs</key>
 			<dict/>
 			<key>outputs</key>
 			<dict>
 				<key>depth</key>
 				<string>depth_scene</string>
+				<key>color</key>
+				<string>color_scene</string>
 			</dict>
 		</dict>
 		<key>pass_scene_rev</key>
 		<dict>
-			<key>cullMode</key>
-			<string>none</string>
 			<key>pointOfView</key>
 			<string>cam2</string>
 			<key>stencilStates</key>
@@ -92,36 +92,6 @@
 				<string>color_rev</string>
 			</dict>
 		</dict>
-		<key>pass_mix</key>
-		<dict>
-			<key>colorStates</key>
-			<dict>
-				<key>clear</key>
-				<true/>
-			</dict>
-			<key>draw</key>
-			<string>DRAW_QUAD</string>
-			<key>program</key>
-			<string>pass1</string>
-			<key>inputs</key>
-			<dict>
-				<key>a_position</key>
-				<string>a_position-symbol</string>
-				<key>sampler_color_scene</key>
-				<string>COLOR</string>
-				<key>sampler_color_plane</key>
-				<string>color_plane</string>
-				<key>sampler_depth_scene</key>
-				<string>depth_scene</string>
-				<key>sampler_depth_plane</key>
-				<string>depth_plane</string>
-			</dict>
-			<key>outputs</key>
-			<dict>
-				<key>color</key>
-				<string>COLOR</string>
-			</dict>
-		</dict>
 		<key>pass_plane</key>
 		<dict>
 			<key>colorStates</key>
@@ -130,7 +100,7 @@
 				<true/>
 			</dict>
 			<key>program</key>
-			<string>pass_plane</string>
+			<string>mirror_plane</string>
 			<key>outputs</key>
 			<dict>
 				<key>color</key>
@@ -193,6 +163,36 @@
 			<key>includeCategoryMask</key>
 			<string>2</string>
 		</dict>
+		<key>pass_mix</key>
+		<dict>
+			<key>colorStates</key>
+			<dict>
+				<key>clear</key>
+				<true/>
+			</dict>
+			<key>draw</key>
+			<string>DRAW_QUAD</string>
+			<key>program</key>
+			<string>mirror_mix</string>
+			<key>inputs</key>
+			<dict>
+				<key>a_position</key>
+				<string>a_position-symbol</string>
+				<key>sampler_color_scene</key>
+				<string>color_scene</string>
+				<key>sampler_color_plane</key>
+				<string>color_plane</string>
+				<key>sampler_depth_scene</key>
+				<string>depth_scene</string>
+				<key>sampler_depth_plane</key>
+				<string>depth_plane</string>
+			</dict>
+			<key>outputs</key>
+			<dict>
+				<key>color</key>
+				<string>COLOR</string>
+			</dict>
+		</dict>
 	</dict>
 	<key>targets</key>
 	<dict>
@@ -254,7 +254,7 @@
 			<key>type</key>
 			<string>sampler2D</string>
 			<key>image</key>
-			<string>normal_water.png</string>
+			<string>normal_water.jpg</string>
 		</dict>
 		<key>size_screen</key>
 		<dict>

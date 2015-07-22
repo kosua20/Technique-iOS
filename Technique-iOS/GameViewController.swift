@@ -76,7 +76,7 @@ class GameViewController: UIViewController {
         lightNode.light!.type = SCNLightTypeOmni
         lightNode.position = SCNVector3(x: 0, y: 10, z: 10)
         scene.rootNode.addChildNode(lightNode)
-        
+    
         // create and add an ambient light to the scene
         let ambientLightNode = SCNNode()
         ambientLightNode.light = SCNLight()
@@ -94,30 +94,25 @@ class GameViewController: UIViewController {
         // animate the 3d object
         ship.runAction(SCNAction.repeatActionForever(SCNAction.rotateByX(0, y: 2, z: 0, duration: 10)))
         
-        let cube = SCNNode(geometry: SCNBox(width: 80.0, height: 80.0, length: 80.0, chamferRadius: 0.0))
-        //let scene3 = SCNScene(named: "art.scnassets/cube.dae")!
-        //let cube = scene3.rootNode.childNodeWithName("Cube", recursively: true)!
+        //let cube = SCNNode(geometry: SCNBox(width: 80.0, height: 80.0, length: 80.0, chamferRadius: 0.0))
+        let cube = generateReversedBox(true)
         cube.position = SCNVector3Make(0.0, 0.0, 0.0)
         cube.name = "Cube"
         cube.categoryBitMask = 0b100
-        //cube.scale = SCNVector3(x: 15.0, y: 15.0, z: 15.0)
+        cube.scale = SCNVector3(x: 40.0, y: 40.0, z: 40.0)
        
-        var materials : [SCNMaterial] = []
-        for i in 1..<7 {
-            let material_cube = SCNMaterial()
-            material_cube.cullMode = SCNCullMode.Front
-            material_cube.doubleSided = false
-            material_cube.emission.contents = "art.scnassets/\(i).png"
-            material_cube.emission.intensity = 0.7
-            materials.append(material_cube)
-        }
+                let mat = SCNMaterial()
+        //mat.emission.contents = "art.scnassets/skymap.png"
+        //mat.emission.intensity = 0.1
+       mat.diffuse.contents = "art.scnassets/skymap.png"
         
-        cube.geometry?.materials = materials
+        cube.geometry?.materials = [mat]
         scene.rootNode.addChildNode(cube)
         
         let floor = SCNNode(geometry: SCNPlane(width: 80.0, height: 80.0))
         floor.eulerAngles.x = -3.14159*0.5
         let material2 = SCNMaterial()
+       
        // material2.diffuse.contents = UIColor(red: 0.0, green: 0.0, blue: 0.0, alpha: 0.0)
        // let im_grid = UIImage(named: "art.scnassets/grid_texture.png")
         //material2.diffuse.contents = im_grid
@@ -223,6 +218,91 @@ class GameViewController: UIViewController {
         
     }
     //-------UTILITIES--------
+    func generateReversedBox(blender : Bool) -> SCNNode{
+        if (blender) {
+            let scene3 = SCNScene(named: "art.scnassets/cube.dae")!
+            let cube1 = scene3.rootNode.childNodeWithName("Cube", recursively: true)!
+            
+            return cube1
+            //return cube1
+           /* let cube_geom = cube1.geometry!
+            
+            
+            let chab = cube_geom.geometrySourcesForSemantic(SCNGeometrySourceSemanticVertex)
+            var vec = chab!.first as! SCNGeometrySource
+            
+            let chab2 = cube_geom.geometrySourcesForSemantic(SCNGeometrySourceSemanticNormal)
+            var nor = chab2!.first as! SCNGeometrySource
+            
+            let chab3 = cube_geom.geometrySourcesForSemantic(SCNGeometrySourceSemanticTexcoord)
+            var tex = chab3!.first as! SCNGeometrySource
+            
+            let vec1 = [0,1,2,3,4,5]
+            let f1 = SCNGeometryElement(data: NSData(bytes: vec1, length: 6), primitiveType: SCNGeometryPrimitiveType.Triangles, primitiveCount: 2, bytesPerIndex: 1)
+            
+            let vec2 = [6,7,8,9,10,11]
+            let f2 = SCNGeometryElement(data: NSData(bytes: vec2, length: 6), primitiveType: SCNGeometryPrimitiveType.Triangles, primitiveCount: 2, bytesPerIndex: 1)
+            
+            let vec3 = [12,13,14,15,16,17]
+            let f3 = SCNGeometryElement(data: NSData(bytes: vec3, length: 6), primitiveType: SCNGeometryPrimitiveType.Triangles, primitiveCount: 2, bytesPerIndex: 1)
+            
+            let vec4 = [18,19,20,21,22,23]
+            let f4 = SCNGeometryElement(data: NSData(bytes: vec4, length: 6), primitiveType: SCNGeometryPrimitiveType.Triangles, primitiveCount: 2, bytesPerIndex: 1)
+            
+            let vec5 = [24,25,26,27,28,29]
+            let f5 = SCNGeometryElement(data: NSData(bytes: vec5, length: 6), primitiveType: SCNGeometryPrimitiveType.Triangles, primitiveCount: 2, bytesPerIndex: 1)
+            
+            let vec6 = [30,31,32,33,34,35]
+            let f6 = SCNGeometryElement(data: NSData(bytes: vec6, length: 6), primitiveType: SCNGeometryPrimitiveType.Triangles, primitiveCount: 2, bytesPerIndex: 1)
+            
+            let geom = SCNGeometry(sources: [vec,nor,tex], elements: [f1,f2,f3,f4,f5,f6])
+            
+            return SCNNode(geometry: geom)*/
+        }
+        let cube = SCNBox(width: 1.0, height: 1.0, length: 1.0, chamferRadius: 0.0)
+        
+        var el = cube.geometryElementAtIndex(0)!
+        
+        let chab = cube.geometrySourcesForSemantic(SCNGeometrySourceSemanticVertex)
+        var vec = chab!.first as! SCNGeometrySource
+        
+        let chab2 = cube.geometrySourcesForSemantic(SCNGeometrySourceSemanticTexcoord)
+        var tex = chab2!.first as! SCNGeometrySource
+        
+        var norcoords : [SCNVector3] = [
+            SCNVector3(x: -0.0, y: -0.0, z: -1.0),
+            SCNVector3(x: -0.0, y: -0.0, z: -1.0),
+            SCNVector3(x: -0.0, y: -0.0, z: -1.0),
+            SCNVector3(x: -0.0, y: -0.0, z: -1.0),
+            SCNVector3(x: -1.0, y: -0.0, z: 0.0),
+            SCNVector3(x: -1.0, y: -0.0, z: 0.0),
+            SCNVector3(x: -1.0, y: -0.0, z: 0.0),
+            SCNVector3(x: -1.0, y: -0.0, z: 0.0),
+            SCNVector3(x: 0.0, y: -0.0, z: 1.0),
+            SCNVector3(x: 0.0, y: -0.0, z: 1.0),
+            SCNVector3(x: 0.0, y: -0.0, z: 1.0),
+            SCNVector3(x: 0.0, y: -0.0, z: 1.0),
+            SCNVector3(x: 1.0, y: -0.0, z: -0.0),
+            SCNVector3(x: 1.0, y: -0.0, z: -0.0),
+            SCNVector3(x: 1.0, y: -0.0, z: -0.0),
+            SCNVector3(x: 1.0, y: -0.0, z: -0.0),
+            SCNVector3(x: -0.0, y: -1.0, z: 0.0),
+            SCNVector3(x: -0.0, y: -1.0, z: 0.0),
+            SCNVector3(x: -0.0, y: -1.0, z: 0.0),
+            SCNVector3(x: -0.0, y: -1.0, z: 0.0),
+            SCNVector3(x: -0.0, y: 1.0, z: 0.0),
+            SCNVector3(x: -0.0, y: 1.0, z: 0.0),
+            SCNVector3(x: -0.0, y: 1.0, z: 0.0),
+            SCNVector3(x: -0.0, y: 1.0, z: 0.0)
+        ]
+        var nor = SCNGeometrySource(data: NSData(bytes: norcoords, length:12*24), semantic: SCNGeometrySourceSemanticNormal, vectorCount: 24, floatComponents: true, componentsPerVector: 3, bytesPerComponent: 4, dataOffset: 0, dataStride: 0)
+        
+        
+        let geom = SCNGeometry(sources: [vec,nor,tex], elements: [el])
+        let cubeNode = SCNNode(geometry: geom)
+        return cubeNode
+        
+    }
     
     func clamp<T: Comparable>(val:T, mini:T, maxi:T) -> T{
         return max(min(maxi,val),mini)
