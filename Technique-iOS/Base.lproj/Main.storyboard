@@ -2,20 +2,54 @@
 <document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="7706" systemVersion="14E46" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" initialViewController="BV1-FR-VrT">
     <dependencies>
         <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="7703"/>
+        <capability name="Constraints to layout margins" minToolsVersion="6.0"/>
     </dependencies>
     <scenes>
         <!--Game View Controller-->
         <scene sceneID="tXr-a1-R10">
             <objects>
                 <viewController id="BV1-FR-VrT" customClass="GameViewController" customModule="Technique_iOS" customModuleProvider="target" sceneMemberID="viewController">
-                    <sceneKitView key="view" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" wantsMultisampling="NO" id="3se-qz-xqx">
+                    <layoutGuides>
+                        <viewControllerLayoutGuide type="top" id="qR7-Xd-DHn"/>
+                        <viewControllerLayoutGuide type="bottom" id="Uxm-aI-ued"/>
+                    </layoutGuides>
+                    <view key="view" contentMode="scaleToFill" id="ItB-Bb-Wme">
                         <rect key="frame" x="0.0" y="0.0" width="600" height="600"/>
-                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
-                        <color key="backgroundColor" white="0.0" alpha="1" colorSpace="custom" customColorSpace="calibratedWhite"/>
-                    </sceneKitView>
+                        <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                        <subviews>
+                            <sceneKitView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="m5l-7O-czh">
+                                <rect key="frame" x="0.0" y="0.0" width="600" height="600"/>
+                                <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                            </sceneKitView>
+                            <segmentedControl opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="top" segmentControlStyle="plain" selectedSegmentIndex="0" translatesAutoresizingMaskIntoConstraints="NO" id="0xk-d8-nCP">
+                                <rect key="frame" x="236.5" y="534" width="123" height="29"/>
+                                <segments>
+                                    <segment title="First"/>
+                                    <segment title="Second"/>
+                                </segments>
+                                <connections>
+                                    <action selector="selectedTechnique:" destination="BV1-FR-VrT" eventType="valueChanged" id="bmP-xb-Y3h"/>
+                                </connections>
+                            </segmentedControl>
+                        </subviews>
+                        <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                        <constraints>
+                            <constraint firstItem="Uxm-aI-ued" firstAttribute="top" secondItem="m5l-7O-czh" secondAttribute="bottom" id="3Hl-Sg-0n2"/>
+                            <constraint firstAttribute="trailingMargin" secondItem="m5l-7O-czh" secondAttribute="trailing" constant="-16" id="6eX-jY-SVQ"/>
+                            <constraint firstItem="m5l-7O-czh" firstAttribute="top" secondItem="ItB-Bb-Wme" secondAttribute="topMargin" id="XGS-hI-rFT"/>
+                            <constraint firstItem="m5l-7O-czh" firstAttribute="leading" secondItem="ItB-Bb-Wme" secondAttribute="leadingMargin" constant="-16" id="Y77-WD-bpP"/>
+                            <constraint firstItem="Uxm-aI-ued" firstAttribute="top" secondItem="0xk-d8-nCP" secondAttribute="bottom" constant="38" id="lAl-8q-40e"/>
+                            <constraint firstAttribute="centerX" secondItem="0xk-d8-nCP" secondAttribute="centerX" constant="2" id="p3X-G9-YJ0"/>
+                        </constraints>
+                    </view>
+                    <connections>
+                        <outlet property="scnView" destination="m5l-7O-czh" id="sZ5-PC-zOp"/>
+                        <outlet property="segControl" destination="0xk-d8-nCP" id="vpw-jN-mbT"/>
+                    </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="SZV-WD-TEh" sceneMemberID="firstResponder"/>
             </objects>
+            <point key="canvasLocation" x="7" y="106"/>
         </scene>
     </scenes>
 </document>
