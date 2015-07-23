@@ -20,7 +20,7 @@ class GameViewController: UIViewController {
     private let cameraNode2 : SCNNode = SCNNode()
     private var techniques : [String : SCNTechnique] = [:]
     private var cube : SCNNode = SCNNode()
-    
+    private var lightNode = SCNNode()
     override func viewDidLoad() {
         
         super.viewDidLoad()
@@ -70,7 +70,7 @@ class GameViewController: UIViewController {
         // MARK: Lights
         //-------------------------------------------
         // create and add a light to the scene
-        let lightNode = SCNNode()
+        
         lightNode.light = SCNLight()
         lightNode.light!.type = SCNLightTypeOmni
         lightNode.position = SCNVector3(x: 0, y: 10, z: 10)
@@ -93,6 +93,7 @@ class GameViewController: UIViewController {
         let ship = scene2.rootNode.childNodeWithName("ship", recursively: true)!
         ship.position.y += 1.5
         ship.scale = SCNVector3(x: 0.8, y: 0.8, z: 0.8)
+        ship.name = "ship"
         scene.rootNode.addChildNode(ship)
         // animate the 3d object
         ship.runAction(SCNAction.repeatActionForever(SCNAction.rotateByX(0, y: 2, z: 0, duration: 10)))
@@ -138,8 +139,12 @@ class GameViewController: UIViewController {
         scene.background.contents = ["art.scnassets/3.png","art.scnassets/art.scnassets/1.png","art.scnassets/5.png","art.scnassets/6.png","art.scnassets/2.png","art.scnassets/4.png"]
         // configure the view
         scnView.backgroundColor = UIColor(red: 0.1, green: 0.1, blue: 0.3, alpha: 1.0)
-        
-        
+        let cube1 = SCNNode(geometry: SCNBox(width: 0.5, height: 1.0, length: 0.5, chamferRadius: 0.0))
+        scene.rootNode.addChildNode(cube1)
+        cube1.position = SCNVector3(x: 0.0, y: 0.5, z: 0.0)
+        let sphere1 = SCNNode(geometry: SCNSphere(radius: 0.5))
+        sphere1.position = SCNVector3(x: 0.0, y: 0.5, z: 0.5)
+        scene.rootNode.addChildNode(sphere1)
         
         //-------------------------------------------
         // MARK: Techniques
@@ -221,8 +226,10 @@ class GameViewController: UIViewController {
         case "Mirror","SSAO","Sobel","Drops":
             scnView.technique = techniques[name]
             cube.hidden = name != "Mirror"
+           // lightNode.hidden = name == "SSAO"
         default:
             cube.hidden = true
+            //lightNode.hidden = false
             scnView.technique = nil
         }
     }
@@ -279,6 +286,7 @@ class GameViewController: UIViewController {
         cameraNode1.position = cameraSphere.convertPosition(camera.position, toNode: nil)
         cameraNode2.position = cameraNode1.position
         cameraNode2.position.y = -cameraNode2.position.y
+    
         
     }
     

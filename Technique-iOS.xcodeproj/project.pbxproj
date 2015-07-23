@@ -10,6 +10,16 @@
 		F4029D991B6015F100435DF2 /* sobel_technique.plist in Resources */ = {isa = PBXBuildFile; fileRef = F4029D981B6015F100435DF2 /* sobel_technique.plist */; };
 		F4029D9C1B60169F00435DF2 /* sobel_1.fsh in Resources */ = {isa = PBXBuildFile; fileRef = F4029D9A1B60169F00435DF2 /* sobel_1.fsh */; };
 		F4029D9D1B60169F00435DF2 /* sobel_1.vsh in Resources */ = {isa = PBXBuildFile; fileRef = F4029D9B1B60169F00435DF2 /* sobel_1.vsh */; };
+		F40434681B6158AE0064AC0C /* ssao_positions.fsh in Resources */ = {isa = PBXBuildFile; fileRef = F40434661B6158AE0064AC0C /* ssao_positions.fsh */; };
+		F40434691B6158AE0064AC0C /* ssao_positions.vsh in Resources */ = {isa = PBXBuildFile; fileRef = F40434671B6158AE0064AC0C /* ssao_positions.vsh */; };
+		F453198F1B61200D003DBC62 /* ssao_mix.fsh in Resources */ = {isa = PBXBuildFile; fileRef = F453198C1B61200D003DBC62 /* ssao_mix.fsh */; };
+		F45319901B61200D003DBC62 /* ssao_mix.vsh in Resources */ = {isa = PBXBuildFile; fileRef = F453198D1B61200D003DBC62 /* ssao_mix.vsh */; };
+		F45319911B61200D003DBC62 /* ssao_technique.plist in Resources */ = {isa = PBXBuildFile; fileRef = F453198E1B61200D003DBC62 /* ssao_technique.plist */; };
+		F45319961B612184003DBC62 /* ssao_ao.fsh in Resources */ = {isa = PBXBuildFile; fileRef = F45319921B612184003DBC62 /* ssao_ao.fsh */; };
+		F45319971B612184003DBC62 /* ssao_ao.vsh in Resources */ = {isa = PBXBuildFile; fileRef = F45319931B612184003DBC62 /* ssao_ao.vsh */; };
+		F45319981B612184003DBC62 /* ssao_normals.fsh in Resources */ = {isa = PBXBuildFile; fileRef = F45319941B612184003DBC62 /* ssao_normals.fsh */; };
+		F45319991B612184003DBC62 /* ssao_normals.vsh in Resources */ = {isa = PBXBuildFile; fileRef = F45319951B612184003DBC62 /* ssao_normals.vsh */; };
+		F453199B1B612246003DBC62 /* noise_map.png in Resources */ = {isa = PBXBuildFile; fileRef = F453199A1B612246003DBC62 /* noise_map.png */; };
 		F49289771B5FB9C000770F95 /* normal_water.jpg in Resources */ = {isa = PBXBuildFile; fileRef = F49289761B5FB9C000770F95 /* normal_water.jpg */; };
 		F4E80E5F1B59B91A0081EFD7 /* SCNVector3Extensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = F4E80E5E1B59B91A0081EFD7 /* SCNVector3Extensions.swift */; };
 		F4ED44661B5D9D8500AD6B62 /* mirror_plane.fsh in Resources */ = {isa = PBXBuildFile; fileRef = F4ED44641B5D9D8500AD6B62 /* mirror_plane.fsh */; };
@@ -42,6 +52,16 @@
 		F4029D981B6015F100435DF2 /* sobel_technique.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = sobel_technique.plist; sourceTree = "<group>"; };
 		F4029D9A1B60169F00435DF2 /* sobel_1.fsh */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.glsl; path = sobel_1.fsh; sourceTree = "<group>"; };
 		F4029D9B1B60169F00435DF2 /* sobel_1.vsh */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.glsl; path = sobel_1.vsh; sourceTree = "<group>"; };
+		F40434661B6158AE0064AC0C /* ssao_positions.fsh */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.glsl; path = ssao_positions.fsh; sourceTree = "<group>"; };
+		F40434671B6158AE0064AC0C /* ssao_positions.vsh */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.glsl; path = ssao_positions.vsh; sourceTree = "<group>"; };
+		F453198C1B61200D003DBC62 /* ssao_mix.fsh */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.glsl; path = ssao_mix.fsh; sourceTree = "<group>"; };
+		F453198D1B61200D003DBC62 /* ssao_mix.vsh */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.glsl; path = ssao_mix.vsh; sourceTree = "<group>"; };
+		F453198E1B61200D003DBC62 /* ssao_technique.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = ssao_technique.plist; sourceTree = "<group>"; };
+		F45319921B612184003DBC62 /* ssao_ao.fsh */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.glsl; path = ssao_ao.fsh; sourceTree = "<group>"; };
+		F45319931B612184003DBC62 /* ssao_ao.vsh */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.glsl; path = ssao_ao.vsh; sourceTree = "<group>"; };
+		F45319941B612184003DBC62 /* ssao_normals.fsh */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.glsl; path = ssao_normals.fsh; sourceTree = "<group>"; };
+		F45319951B612184003DBC62 /* ssao_normals.vsh */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.glsl; path = ssao_normals.vsh; sourceTree = "<group>"; };
+		F453199A1B612246003DBC62 /* noise_map.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = noise_map.png; sourceTree = "<group>"; };
 		F49289761B5FB9C000770F95 /* normal_water.jpg */ = {isa = PBXFileReference; lastKnownFileType = image.jpeg; path = normal_water.jpg; sourceTree = "<group>"; };
 		F49289781B5FC2B000770F95 /* PlaygroundTechnique.playground */ = {isa = PBXFileReference; lastKnownFileType = file.playground; name = PlaygroundTechnique.playground; path = ../../PlaygroundTechnique.playground; sourceTree = "<group>"; };
 		F4E80E5E1B59B91A0081EFD7 /* SCNVector3Extensions.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SCNVector3Extensions.swift; sourceTree = "<group>"; };
@@ -95,15 +115,39 @@
 			name = sobel;
 			sourceTree = "<group>";
 		};
+		F453198A1B611FBC003DBC62 /* drops */ = {
+			isa = PBXGroup;
+			children = (
+			);
+			name = drops;
+			sourceTree = "<group>";
+		};
+		F453198B1B611FCE003DBC62 /* SSAO */ = {
+			isa = PBXGroup;
+			children = (
+				F453198E1B61200D003DBC62 /* ssao_technique.plist */,
+				F45319951B612184003DBC62 /* ssao_normals.vsh */,
+				F45319941B612184003DBC62 /* ssao_normals.fsh */,
+				F40434671B6158AE0064AC0C /* ssao_positions.vsh */,
+				F40434661B6158AE0064AC0C /* ssao_positions.fsh */,
+				F45319931B612184003DBC62 /* ssao_ao.vsh */,
+				F45319921B612184003DBC62 /* ssao_ao.fsh */,
+				F453198D1B61200D003DBC62 /* ssao_mix.vsh */,
+				F453198C1B61200D003DBC62 /* ssao_mix.fsh */,
+				F453199A1B612246003DBC62 /* noise_map.png */,
+			);
+			name = SSAO;
+			sourceTree = "<group>";
+		};
 		F4994CB31B600A6E008A9558 /* mirror */ = {
 			isa = PBXGroup;
 			children = (
 				F4EF9B1C1B596F52002887C4 /* mirror_technique.plist */,
-				F49289761B5FB9C000770F95 /* normal_water.jpg */,
-				F4EF9B1E1B59721E002887C4 /* mirror_mix.vsh */,
-				F4EF9B1F1B59721E002887C4 /* mirror_mix.fsh */,
 				F4ED44651B5D9D8500AD6B62 /* mirror_plane.vsh */,
 				F4ED44641B5D9D8500AD6B62 /* mirror_plane.fsh */,
+				F4EF9B1E1B59721E002887C4 /* mirror_mix.vsh */,
+				F4EF9B1F1B59721E002887C4 /* mirror_mix.fsh */,
+				F49289761B5FB9C000770F95 /* normal_water.jpg */,
 			);
 			name = mirror;
 			sourceTree = "<group>";
@@ -134,6 +178,8 @@
 				F4EF9AFD1B596D7A002887C4 /* GameViewController.swift */,
 				F49289781B5FC2B000770F95 /* PlaygroundTechnique.playground */,
 				F4E80E5E1B59B91A0081EFD7 /* SCNVector3Extensions.swift */,
+				F453198B1B611FCE003DBC62 /* SSAO */,
+				F453198A1B611FBC003DBC62 /* drops */,
 				F4994CB31B600A6E008A9558 /* mirror */,
 				F4029D971B6015C800435DF2 /* sobel */,
 				F4EF9AFF1B596D7A002887C4 /* Main.storyboard */,
@@ -252,18 +298,28 @@
 				F4EF9B1D1B596F52002887C4 /* mirror_technique.plist in Resources */,
 				F4EF9B241B59774D002887C4 /* sobel_2.fsh in Resources */,
 				F4EF9B211B59721E002887C4 /* mirror_mix.fsh in Resources */,
+				F45319971B612184003DBC62 /* ssao_ao.vsh in Resources */,
+				F45319991B612184003DBC62 /* ssao_normals.vsh in Resources */,
+				F40434691B6158AE0064AC0C /* ssao_positions.vsh in Resources */,
 				F4EF9B061B596D7A002887C4 /* LaunchScreen.xib in Resources */,
 				F4EF9B031B596D7A002887C4 /* Images.xcassets in Resources */,
 				F4029D9C1B60169F00435DF2 /* sobel_1.fsh in Resources */,
 				F4029D9D1B60169F00435DF2 /* sobel_1.vsh in Resources */,
+				F45319981B612184003DBC62 /* ssao_normals.fsh in Resources */,
+				F45319911B61200D003DBC62 /* ssao_technique.plist in Resources */,
 				F4EF9B251B59774D002887C4 /* sobel_2.vsh in Resources */,
+				F453199B1B612246003DBC62 /* noise_map.png in Resources */,
+				F45319961B612184003DBC62 /* ssao_ao.fsh in Resources */,
+				F40434681B6158AE0064AC0C /* ssao_positions.fsh in Resources */,
 				F4EF9AFC1B596D7A002887C4 /* art.scnassets in Resources */,
 				F4ED44661B5D9D8500AD6B62 /* mirror_plane.fsh in Resources */,
 				F4EF9B201B59721E002887C4 /* mirror_mix.vsh in Resources */,
 				F4EF9B011B596D7A002887C4 /* Main.storyboard in Resources */,
 				F49289771B5FB9C000770F95 /* normal_water.jpg in Resources */,
 				F4029D991B6015F100435DF2 /* sobel_technique.plist in Resources */,
+				F45319901B61200D003DBC62 /* ssao_mix.vsh in Resources */,
 				F4ED44671B5D9D8500AD6B62 /* mirror_plane.vsh in Resources */,
+				F453198F1B61200D003DBC62 /* ssao_mix.fsh in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
