@@ -8,15 +8,15 @@ uniform vec2 size;
 const float thfov = 0.5773502692;
 const float projA = 1.0101010101;
 
-const float g_scale = 1.5;
+const float g_scale = 1.0;
 const float g_bias = 0.0;
-const float g_sample_rad = 0.0008;
-const float g_intensity = 2.5;
+const float g_sample_rad = 0.001;
+const float g_intensity = 1.5;
 
 vec3 getPosition(vec2 uv_c) {
     vec2 ndc = uv_c * 2.0 - 1.0;
     float aspect = size.x / size.y;
-    vec3 viewray = vec3(ndc.x * thfov * aspect,ndc.y * thfov,1.0);
+    vec3 viewray = vec3(ndc.x * thfov * aspect,ndc.y * thfov,-1.0);
     float linear_depth = -projA/(texture2D(depthSampler,uv_c).r - projA);
     vec3 pos = linear_depth / 100.0 * viewray;
    

@@ -37,8 +37,6 @@
 		<dict>
 			<key>draw</key>
 			<string>DRAW_SCENE</string>
-			<key>excludeCategoryMask</key>
-			<string>2</string>
 			<key>program</key>
 			<string>ssao_normals</string>
 			<key>inputs</key>
