@@ -1,0 +1,65 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE plist PUBLIC "-//Apple//DTD PLIST 1.0//EN" "http://www.apple.com/DTDs/PropertyList-1.0.dtd">
+<plist version="1.0">
+<dict>
+	<key>sequence</key>
+	<array>
+		<string>pass_mix</string>
+	</array>
+	<key>passes</key>
+	<dict>
+		<key>pass_mix</key>
+		<dict>
+			<key>draw</key>
+			<string>DRAW_QUAD</string>
+			<key>program</key>
+			<string>drops</string>
+			<key>inputs</key>
+			<dict>
+				<key>a_position</key>
+				<string>a_position-symbol</string>
+				<key>u_time</key>
+				<string>u_time-symbol</string>
+				<key>colorSampler</key>
+				<string>COLOR</string>
+				<key>normalSampler</key>
+				<string>normal_map</string>
+				<key>size</key>
+				<string>size_screen</string>
+			</dict>
+			<key>outputs</key>
+			<dict>
+				<key>color</key>
+				<string>COLOR</string>
+			</dict>
+		</dict>
+	</dict>
+	<key>targets</key>
+	<dict/>
+	<key>symbols</key>
+	<dict>
+		<key>size_screen</key>
+		<dict>
+			<key>type</key>
+			<string>vec2</string>
+		</dict>
+		<key>normal_map</key>
+		<dict>
+			<key>type</key>
+			<string>sampler2D</string>
+			<key>image</key>
+			<string>normal_map.jpg</string>
+		</dict>
+		<key>a_position-symbol</key>
+		<dict>
+			<key>semantic</key>
+			<string>vertex</string>
+		</dict>
+		<key>u_time-symbol</key>
+		<dict>
+			<key>semantic</key>
+			<string>time</string>
+		</dict>
+	</dict>
+</dict>
+</plist>

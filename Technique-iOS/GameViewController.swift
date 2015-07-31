@@ -10,8 +10,9 @@ import UIKit
 import QuartzCore
 import SceneKit
 import SpriteKit
+import OpenGLES
 
-class GameViewController: UIViewController {
+class GameViewController: UIViewController, SCNSceneRendererDelegate {
 
     @IBOutlet weak var scnView: SCNView!
     @IBOutlet weak var segControl: UISegmentedControl!
@@ -20,12 +21,14 @@ class GameViewController: UIViewController {
     private let cameraNode2 : SCNNode = SCNNode()
     private var techniques : [String : SCNTechnique] = [:]
     private var cube : SCNNode = SCNNode()
-    private var lightNode = SCNNode()
+    private var scene1 = SCNNode()
+    private var scene2 = SCNNode()
     override func viewDidLoad() {
         
         super.viewDidLoad()
         let scene = SCNScene()
         segControl.removeAllSegments()
+        
         
         //-------------------------------------------
         // MARK: Cameras
@@ -70,31 +73,34 @@ class GameViewController: UIViewController {
         // MARK: Lights
         //-------------------------------------------
         // create and add a light to the scene
-        
+        let lightNode = SCNNode()
         lightNode.light = SCNLight()
         lightNode.light!.type = SCNLightTypeOmni
         lightNode.position = SCNVector3(x: 0, y: 10, z: 10)
-        scene.rootNode.addChildNode(lightNode)
+        scene1.addChildNode(lightNode)
     
         // create and add an ambient light to the scene
         let ambientLightNode = SCNNode()
         ambientLightNode.light = SCNLight()
         ambientLightNode.light!.type = SCNLightTypeAmbient
         ambientLightNode.light!.color = UIColor.darkGrayColor()
-        scene.rootNode.addChildNode(ambientLightNode)
+        scene1.addChildNode(ambientLightNode)
+        
         
         
         //-------------------------------------------
         // MARK: Nodes
         //-------------------------------------------
+        
+        //-------- SCENE 1 --------
         // Ship
         // retrieve the ship node
-        let scene2 = SCNScene(named: "art.scnassets/ship.dae")!
-        let ship = scene2.rootNode.childNodeWithName("ship", recursively: true)!
+        let sceneShip = SCNScene(named: "art.scnassets/ship.dae")!
+        let ship = sceneShip.rootNode.childNodeWithName("ship", recursively: true)!
         ship.position.y += 1.5
         ship.scale = SCNVector3(x: 0.8, y: 0.8, z: 0.8)
         ship.name = "ship"
-        scene.rootNode.addChildNode(ship)
+        scene1.addChildNode(ship)
         // animate the 3d object
         ship.runAction(SCNAction.repeatActionForever(SCNAction.rotateByX(0, y: 2, z: 0, duration: 10)))
         
@@ -109,7 +115,7 @@ class GameViewController: UIViewController {
         mat.diffuse.contents = "art.scnassets/skymap.png"
         cube.geometry?.materials = [mat]
         cube.hidden = true
-        scene.rootNode.addChildNode(cube)
+        scene1.addChildNode(cube)
         
         //Floor
         let floor = SCNNode(geometry: SCNPlane(width: 80.0, height: 80.0))
@@ -119,45 +125,151 @@ class GameViewController: UIViewController {
         material2.diffuse.contents = UIImage(named: "art.scnassets/grid_texture")
         floor.geometry?.materials = [material2]
         floor.categoryBitMask = 0b10 //2
-        scene.rootNode.addChildNode(floor)
         floor.position = SCNVector3Make(0.0, 0.0, 0.0)
+        scene1.addChildNode(floor)
+        
+        scene.rootNode.addChildNode(scene1)
+        
+        
+        //-------- SCENE 2 --------
+        
+        let redmat = SCNMaterial()
+        redmat.diffuse.contents = UIColor.redColor()
+        
+        let bluemat = SCNMaterial()
+        bluemat.diffuse.contents = UIColor.blueColor()
+        
+        let yellmat = SCNMaterial()
+        yellmat.diffuse.contents = UIColor.yellowColor()
+        
+        let greenmat = SCNMaterial()
+        greenmat.diffuse.contents = UIColor.greenColor()
+        
+        let greymat = SCNMaterial()
+        greymat.diffuse.contents = UIColor(white: 0.9, alpha: 1.0)
 
         
+        let kPlaneSize : CGFloat = 4.0
         
+        let plane1 = SCNNode(geometry: SCNPlane(width: kPlaneSize, height: kPlaneSize))
+        let plane2 = SCNNode(geometry: SCNPlane(width: kPlaneSize, height: kPlaneSize))
+        let plane3 = SCNNode(geometry: SCNPlane(width: kPlaneSize, height: kPlaneSize))
+        let plane4 = SCNNode(geometry: SCNPlane(width: kPlaneSize, height: kPlaneSize))
+        let plane5 = SCNNode(geometry: SCNPlane(width: kPlaneSize, height: kPlaneSize))
+       
+        plane1.position = SCNVector3(x: 0.0, y: 0.0, z: 0.0)
+        plane3.position = SCNVector3(x: 0.0, y: 4.0, z: 0.0)
+        plane2.position = SCNVector3(x: -2.0, y: 2.0, z: 0.0)
+        plane4.position = SCNVector3(x: 2.0, y: 2.0, z: 0.0)
+        plane5.position = SCNVector3(x: 0.0, y: 2.0, z: -2.0)
+        plane1.eulerAngles.x = -3.14159*0.5
+        plane3.eulerAngles.x = 3.14159*0.5
+        
+        plane2.eulerAngles.y = 3.14159*0.5
+        plane4.eulerAngles.y = -3.14159*0.5
+        
+        plane1.geometry?.materials = [greymat]
+        plane3.geometry?.materials = [greymat]
+        plane5.geometry?.materials = [greymat]
+        
+        plane2.geometry?.materials = [bluemat]
+        plane4.geometry?.materials = [redmat]
+        
+        
+        scene2.addChildNode(plane1)
+        scene2.addChildNode(plane2)
+        scene2.addChildNode(plane3)
+        scene2.addChildNode(plane4)
+        scene2.addChildNode(plane5)
+        
+        let cube1 = SCNNode(geometry: SCNBox(width: 1.2, height: 1.2, length: 1.2, chamferRadius: 0.0))
+        cube1.position = SCNVector3(x: 0.8, y: 0.6, z: 1.0)
+        cube1.geometry?.materials = [yellmat]
+        cube1.eulerAngles.y = 3.14159 / 3.0
+        scene2.addChildNode(cube1)
+        
+        let cube2 = SCNNode(geometry: SCNBox(width: 1.2, height: 2.2, length: 1.2, chamferRadius: 0.0))
+        cube2.position = SCNVector3(x: -0.8, y: 1.1, z: -0.8)
+        cube2.geometry?.materials = [greenmat]
+        cube2.eulerAngles.y = -3.14159 / 5.0
+        scene2.addChildNode(cube2)
+        
+        
+        
+        
+        let sphere1 = SCNNode(geometry: SCNSphere(radius: 0.8))
+        sphere1.position = SCNVector3(x: -0.8, y: 0.7, z: 1.0)
+        scene2.addChildNode(sphere1)
+        
+        
+       
+        
+        let ambientLightNode2 = SCNNode()
+        ambientLightNode2.light = SCNLight()
+        ambientLightNode2.light!.type = SCNLightTypeAmbient
+        ambientLightNode2.light!.color = UIColor.darkGrayColor()
+        scene2.addChildNode(ambientLightNode2)
+        
+        
+        let omniLightNode2 = SCNNode()
+        omniLightNode2.light = SCNLight()
+        omniLightNode2.light!.type = SCNLightTypeOmni
+        omniLightNode2.position = SCNVector3(x: 1.0, y: 3.0, z: 3.0)
+        //scene2.addChildNode(omniLightNode2)
+        
+        
+     
+        
+        
+        
+        scene2.hidden = false
+        scene1.hidden = true
+        scene.rootNode.addChildNode(scene2)
         //-------------------------------------------
         //MARK: View
         //-------------------------------------------
         // set the scene to the view
         scnView.scene = scene
-        
+        scnView.delegate = self
         // allows the user to manipulate the camera
         //scnView.allowsCameraControl = true
         
         // show statistics such as fps and timing information
         scnView.showsStatistics = true
         scnView.pointOfView = cameraNode1
+        //scene.background.contents = UIColor.whiteColor()
         scene.background.contents = ["art.scnassets/3.png","art.scnassets/art.scnassets/1.png","art.scnassets/5.png","art.scnassets/6.png","art.scnassets/2.png","art.scnassets/4.png"]
         // configure the view
-        scnView.backgroundColor = UIColor(red: 0.1, green: 0.1, blue: 0.3, alpha: 1.0)
-        let cube1 = SCNNode(geometry: SCNBox(width: 0.5, height: 1.0, length: 0.5, chamferRadius: 0.0))
-        scene.rootNode.addChildNode(cube1)
-        cube1.position = SCNVector3(x: 0.0, y: 0.5, z: 0.0)
-        let sphere1 = SCNNode(geometry: SCNSphere(radius: 0.5))
-        sphere1.position = SCNVector3(x: 0.0, y: 0.5, z: 0.5)
-        scene.rootNode.addChildNode(sphere1)
+        scnView.backgroundColor = UIColor.whiteColor()
+        
+        
+        
         
         //-------------------------------------------
         // MARK: Techniques
         //-------------------------------------------
         //Load techniques
         
-        
         segControl.insertSegmentWithTitle("None", atIndex: 0, animated: false)
+        
+        //Drops
+        if let path = NSBundle.mainBundle().pathForResource("drops_technique", ofType: "plist") {
+            if let dico1 = NSDictionary(contentsOfFile: path)  {
+                let dico = dico1 as! [String : AnyObject]
+                //println(dico)
+                let technique = SCNTechnique(dictionary:dico)
+                //Need the screen size
+                technique?.setValue(NSValue(CGSize: CGSizeApplyAffineTransform(self.view.frame.size, CGAffineTransformMakeScale(2.0, 2.0))), forKeyPath: "size_screen")
+                techniques["Drops"] = technique
+                segControl.insertSegmentWithTitle("Drops", atIndex: segControl.numberOfSegments, animated: false)
+            }
+        }
+        
         //Sobel filter
         if let path = NSBundle.mainBundle().pathForResource("sobel_technique", ofType: "plist") {
             if let dico1 = NSDictionary(contentsOfFile: path)  {
                 let dico = dico1 as! [String : AnyObject]
-                println(dico)
+                //println(dico)
                 let technique = SCNTechnique(dictionary:dico)
                 //Need the screen size
                 technique?.setValue(NSValue(CGSize: CGSizeApplyAffineTransform(self.view.frame.size, CGAffineTransformMakeScale(2.0, 2.0))), forKeyPath: "size_screen")
@@ -170,7 +282,7 @@ class GameViewController: UIViewController {
         if let path = NSBundle.mainBundle().pathForResource("mirror_technique", ofType: "plist") {
             if let dico1 = NSDictionary(contentsOfFile: path)  {
                 let dico = dico1 as! [String : AnyObject]
-                println(dico)
+                //println(dico)
                 let technique = SCNTechnique(dictionary:dico)
                 //Need the screen size
                 technique?.setValue(NSValue(CGSize: CGSizeApplyAffineTransform(self.view.frame.size, CGAffineTransformMakeScale(2.0, 2.0))), forKeyPath: "size_screen")
@@ -183,7 +295,7 @@ class GameViewController: UIViewController {
         if let path = NSBundle.mainBundle().pathForResource("ssao_technique", ofType: "plist") {
             if let dico1 = NSDictionary(contentsOfFile: path)  {
                 let dico = dico1 as! [String : AnyObject]
-                println(dico)
+                //println(dico)
                 let technique = SCNTechnique(dictionary:dico)
                 //Need the screen size
                 technique?.setValue(NSValue(CGSize: CGSizeApplyAffineTransform(self.view.frame.size, CGAffineTransformMakeScale(2.0, 2.0))), forKeyPath: "size_screen")
@@ -192,18 +304,7 @@ class GameViewController: UIViewController {
             }
         }
         
-        //Drops
-        if let path = NSBundle.mainBundle().pathForResource("drops_technique", ofType: "plist") {
-            if let dico1 = NSDictionary(contentsOfFile: path)  {
-                let dico = dico1 as! [String : AnyObject]
-                println(dico)
-                let technique = SCNTechnique(dictionary:dico)
-                //Need the screen size
-                technique?.setValue(NSValue(CGSize: CGSizeApplyAffineTransform(self.view.frame.size, CGAffineTransformMakeScale(2.0, 2.0))), forKeyPath: "size_screen")
-                techniques["Drops"] = technique
-                segControl.insertSegmentWithTitle("Drops", atIndex: segControl.numberOfSegments, animated: false)
-            }
-        }
+       
         
         segControl.selectedSegmentIndex = 0
         
@@ -215,9 +316,31 @@ class GameViewController: UIViewController {
         let gesture2 = UIPinchGestureRecognizer(target: self, action: "pinchDetected:")
         scnView.addGestureRecognizer(gesture2)
         
-       
+    
     }
     
+    
+    private var received = false
+    func renderer( aRenderer: SCNSceneRenderer, willRenderScene scene: SCNScene, atTime time: NSTimeInterval) {
+        
+        if(!received){
+            received = true
+            var point = glGetString(0x1F03) as UnsafePointer<UInt8>
+            var array : [Int8] = []
+            while (point[0] != UInt8(ascii:"\0")){
+                array.append(Int8(point[0]))
+                point = point.advancedBy(1)
+            }
+            array.append(Int8(0))
+            if let point2 = String.fromCString(array) {
+                println("Available extensions :\n--------------------------")
+                println(point2)
+            }
+        }
+       
+
+    }
+
     //-------GESTURES AND CAMERA MOVES--------
     
     @IBAction func selectedTechnique(sender: UISegmentedControl) {
@@ -226,12 +349,15 @@ class GameViewController: UIViewController {
         case "Mirror","SSAO","Sobel","Drops":
             scnView.technique = techniques[name]
             cube.hidden = name != "Mirror"
-           // lightNode.hidden = name == "SSAO"
+            scene2.hidden = name != "SSAO"
+            
+            
         default:
             cube.hidden = true
-            //lightNode.hidden = false
+            scene2.hidden = false
             scnView.technique = nil
         }
+        scene1.hidden = !scene2.hidden
     }
     
     var previousScreenPoint = CGPoint(x: 0,y: 0)
@@ -347,7 +473,6 @@ class GameViewController: UIViewController {
     func clamp<T: Comparable>(val:T, mini:T, maxi:T) -> T{
         return max(min(maxi,val),mini)
     }
-    
     
     override func shouldAutorotate() -> Bool {
         return true

@@ -2,7 +2,7 @@ uniform sampler2D sampler_color_scene;
 uniform sampler2D sampler_depth_scene;
 uniform sampler2D sampler_color_plane;
 uniform sampler2D sampler_depth_plane;
-
+uniform float u_time;
 
 varying vec2 uv;
 
@@ -24,7 +24,7 @@ void main() {
            // gl_FragColor.rgb = vec3(0.0,0.0,1.0);
     }
    
-    
+   
     //gl_FragColor = texture2D(sampler_color_scene,uv);
     
     /*if(uv.y <0.5){

@@ -1,7 +1,7 @@
 uniform sampler2D normalSampler;
 uniform sampler2D noiseSampler;
 uniform sampler2D depthSampler;
-uniform sampler2D posSampler;
+uniform sampler2D colorSampler;
 varying vec2 uv;
 uniform vec2 size;
 
@@ -11,7 +11,7 @@ const float projA = 1.0101010101;
 const float g_scale = 1.0;
 const float g_bias = 0.0;
 const float g_sample_rad = 0.001;
-const float g_intensity = 1.5;
+const float g_intensity = 1.0;
 
 vec3 getPosition(vec2 uv_c) {
     vec2 ndc = uv_c * 2.0 - 1.0;
@@ -19,7 +19,6 @@ vec3 getPosition(vec2 uv_c) {
     vec3 viewray = vec3(ndc.x * thfov * aspect,ndc.y * thfov,-1.0);
     float linear_depth = -projA/(texture2D(depthSampler,uv_c).r - projA);
     vec3 pos = linear_depth / 100.0 * viewray;
-   
     return pos;
 }
 
@@ -46,11 +45,11 @@ void main() {
     vec3 normal = texture2D(normalSampler,uv).rgb * 2.0 - 1.0;
     normal = normalize(normal);
     vec3 position = getPosition(uv);
-    vec2 random_normal = texture2D(noiseSampler, uv * size / vec2(64.0,64.0)).xy * 2.0 - 1.0;
+    vec2 random_normal = texture2D(noiseSampler, uv  * size / vec2(64.0,64.0)).xy * 2.0 - 1.0;
     random_normal = normalize(random_normal);
     
     float ao = 0.0;
-    float radius = g_sample_rad / position.z;
+    float radius = g_sample_rad/abs(position.z);
     int iter = 4;
     for(int i = 0;i < iter;i++){
         vec2 coord1 = reflect(pseudoSampleArray(i),random_normal) * radius;
@@ -58,12 +57,13 @@ void main() {
         ao += computeAO(uv,coord1 * 0.25, position,normal);
         ao += computeAO(uv,coord2 * 0.5, position,normal);
         ao += computeAO(uv,coord1 * 0.75, position,normal);
-        ao += computeAO(uv,coord2 * 0.25, position,normal);
+        ao += computeAO(uv,coord2, position,normal);
     }
     
     ao /= (float(iter) * 4.0);
-    
-    gl_FragColor.rgb = vec3(ao);
+    //ao *= exp((-abs(position.z)+100.0)/20.0)/75.0;
+    //ao /= (abs(position.z)*30.0);
+    gl_FragColor.rgb = vec3(1.0-ao)*texture2D(colorSampler,uv).rgb;
    // gl_FragColor.rgb = texture2D(posSampler,uv).rgb;
     gl_FragColor.a = 1.0;
     //gl_FragColor.rgb = position;

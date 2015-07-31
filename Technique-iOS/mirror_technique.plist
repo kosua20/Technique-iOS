@@ -119,14 +119,7 @@
 				<key>colorSampler</key>
 				<string>color_rev</string>
 				<key>normalSampler</key>
-				<dict>
-					<key>target</key>
-					<string>normal_water</string>
-					<key>wrapS</key>
-					<string>repeat</string>
-					<key>wrapT</key>
-					<string>repeat</string>
-				</dict>
+				<string>normal_water</string>
 				<key>a_texcoord</key>
 				<string>a_texcoord-symbol</string>
 				<key>u_time</key>
@@ -186,6 +179,8 @@
 				<string>depth_scene</string>
 				<key>sampler_depth_plane</key>
 				<string>depth_plane</string>
+				<key>u_time</key>
+				<string>u_time-symbol</string>
 			</dict>
 			<key>outputs</key>
 			<dict>
@@ -229,15 +224,15 @@
 			<key>semantic</key>
 			<string>modelViewProjectionTransform</string>
 		</dict>
-		<key>u_time-symbol</key>
-		<dict>
-			<key>semantic</key>
-			<string>time</string>
-		</dict>
 		<key>a_normal-symbol</key>
 		<dict>
 			<key>semantic</key>
 			<string>normal</string>
+		</dict>
+		<key>u_time-symbol</key>
+		<dict>
+			<key>semantic</key>
+			<string>time</string>
 		</dict>
 		<key>a_position-symbol</key>
 		<dict>
