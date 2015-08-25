@@ -9,9 +9,9 @@ const float thfov = 0.5773502692;
 const float projA = 1.0101010101;
 
 const float g_scale = 1.0;
-const float g_bias = 0.0;
+const float g_bias = 0.2;
 const float g_sample_rad = 0.001;
-const float g_intensity = 1.0;
+const float g_intensity = 1.1;
 
 vec3 getPosition(vec2 uv_c) {
     vec2 ndc = uv_c * 2.0 - 1.0;
@@ -19,14 +19,14 @@ vec3 getPosition(vec2 uv_c) {
     vec3 viewray = vec3(ndc.x * thfov * aspect,ndc.y * thfov,-1.0);
     float linear_depth = -projA/(texture2D(depthSampler,uv_c).r - projA);
     vec3 pos = linear_depth / 100.0 * viewray;
-    return pos;
+    return pos;//*0.8;
 }
 
 float computeAO(vec2 uv, vec2 shift, vec3 origin, vec3 normal) {
     vec3 diff = getPosition(uv + shift) - origin;
     vec3 n_diff = normalize(diff);
     float d = length(diff)*g_scale;
-    return max(0.0,dot(normal,n_diff)-g_bias)*(1.0/(1.0+d))*g_intensity;
+    return (1.0-n_diff.z*0.9)*max(0.0,dot(normal,n_diff)-g_bias)*(1.0/(1.0+d))*g_intensity;
 }
 
 vec2 pseudoSampleArray(int index){
@@ -61,10 +61,6 @@ void main() {
     }
     
     ao /= (float(iter) * 4.0);
-    //ao *= exp((-abs(position.z)+100.0)/20.0)/75.0;
-    //ao /= (abs(position.z)*30.0);
     gl_FragColor.rgb = vec3(1.0-ao)*texture2D(colorSampler,uv).rgb;
-   // gl_FragColor.rgb = texture2D(posSampler,uv).rgb;
     gl_FragColor.a = 1.0;
-    //gl_FragColor.rgb = position;
 }

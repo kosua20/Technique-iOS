@@ -1,5 +1,4 @@
 attribute vec4 a_position;
-
 varying vec2 uv;
 
 void main() {

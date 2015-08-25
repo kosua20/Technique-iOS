@@ -6,7 +6,6 @@ uniform mat4 nor_mat;
 varying vec3 normal;
 
 void main() {
-   
     gl_Position = mvp*a_position;
     normal = (nor_mat * a_normal).xyz;
 }
