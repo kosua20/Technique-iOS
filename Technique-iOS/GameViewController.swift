@@ -110,6 +110,7 @@ class GameViewController: UIViewController, SCNSceneRendererDelegate {
         cube.name = "Cube"
         cube.categoryBitMask = 0b100 //3
         cube.scale = SCNVector3(x: 40.0, y: 40.0, z: 40.0)
+        cube.eulerAngles.y = Float(M_PI_2);
         //Material
         let mat = SCNMaterial()
         mat.diffuse.contents = "art.scnassets/skymap.png"
@@ -238,7 +239,7 @@ class GameViewController: UIViewController, SCNSceneRendererDelegate {
         scnView.showsStatistics = true
         scnView.pointOfView = cameraNode1
         //scene.background.contents = UIColor.whiteColor()
-        scene.background.contents = ["art.scnassets/3.png","art.scnassets/art.scnassets/1.png","art.scnassets/5.png","art.scnassets/6.png","art.scnassets/2.png","art.scnassets/4.png"]
+        scene.background.contents = ["art.scnassets/3.png","art.scnassets/1.png","art.scnassets/5.png","art.scnassets/6.png","art.scnassets/2.png","art.scnassets/4.png"]
         // configure the view
         scnView.backgroundColor = UIColor.whiteColor()
         

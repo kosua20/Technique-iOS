@@ -4,8 +4,8 @@
 <dict>
 	<key>sequence</key>
 	<array>
-		<string>pass_scene</string>
 		<string>pass_scene_rev</string>
+		<string>pass_scene</string>
 		<string>pass_plane</string>
 		<string>pass_mix</string>
 	</array>
