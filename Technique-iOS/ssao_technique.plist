@@ -70,29 +70,6 @@
 				<string>COLOR</string>
 			</dict>
 		</dict>
-		<key>pass_mix</key>
-		<dict>
-			<key>draw</key>
-			<string>DRAW_QUAD</string>
-			<key>program</key>
-			<string>ssao_mix</string>
-			<key>inputs</key>
-			<dict>
-				<key>a_position</key>
-				<string>a_position-symbol</string>
-				<key>colorSampler</key>
-				<string>COLOR</string>
-				<key>aoSampler</key>
-				<string>ao_result</string>
-				<key>size</key>
-				<string>size_screen</string>
-			</dict>
-			<key>outputs</key>
-			<dict>
-				<key>color</key>
-				<string>COLOR</string>
-			</dict>
-		</dict>
 	</dict>
 	<key>targets</key>
 	<dict>
