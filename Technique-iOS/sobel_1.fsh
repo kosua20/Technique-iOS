@@ -19,5 +19,5 @@ void main() {
     float t_y_2 = 1.0 * rgb_2_luma(texture2D(colorSampler,uv+vec2(0.0,1.0)/size).rgb);
     float gy1 = (t_y_0 + t_y_1 + t_y_2);
     //gy1 between 0 and 4
-    gl_FragColor.g = 0.25*gy1;
+    gl_FragColor.g = gy1*0.25;
 }
