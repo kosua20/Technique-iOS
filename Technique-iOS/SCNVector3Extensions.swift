@@ -226,7 +226,7 @@ func SCNVector3Lerp(vectorStart: SCNVector3, vectorEnd: SCNVector3, t: Float) ->
  * Project the vector, vectorToProject, onto the vector, projectionVector.
  */
 func SCNVector3Project(vectorToProject: SCNVector3, projectionVector: SCNVector3) -> SCNVector3 {
-    let scale: Float = SCNVector3DotProduct(projectionVector, vectorToProject) / SCNVector3DotProduct(projectionVector, projectionVector)
+    let scale: Float = SCNVector3DotProduct(projectionVector, right: vectorToProject) / SCNVector3DotProduct(projectionVector, right: projectionVector)
     let v: SCNVector3 = projectionVector * scale
     return v
 }

@@ -334,8 +334,8 @@ class GameViewController: UIViewController, SCNSceneRendererDelegate {
             }
             array.append(Int8(0))
             if let point2 = String.fromCString(array) {
-                println("Available extensions :\n--------------------------")
-                println(point2)
+                print("Available extensions :\n--------------------------")
+                print(point2.stringByReplacingOccurrencesOfString(" ", withString: "\n", options: NSStringCompareOptions.CaseInsensitiveSearch, range: nil))
             }
         }
        
@@ -390,7 +390,7 @@ class GameViewController: UIViewController, SCNSceneRendererDelegate {
     let kMaxFactor : Float = 1.15
     
     func pinchDetected(gesture:UIPinchGestureRecognizer){
-        let camera: SCNNode = cameraSphere.childNodes.first as! SCNNode
+        guard let camera: SCNNode = cameraSphere.childNodes.first else {return}
         if(gesture.state == .Began){
             previousPosition =  camera.position
         }
@@ -429,15 +429,15 @@ class GameViewController: UIViewController, SCNSceneRendererDelegate {
         //UNUSED, not working
         let cube = SCNBox(width: 1.0, height: 1.0, length: 1.0, chamferRadius: 0.0)
         
-        var el = cube.geometryElementAtIndex(0)!
+        let el = cube.geometryElementAtIndex(0)
         
         let chab = cube.geometrySourcesForSemantic(SCNGeometrySourceSemanticVertex)
-        var vec = chab!.first as! SCNGeometrySource
+        guard let vec = chab.first else {return SCNNode()}
         
         let chab2 = cube.geometrySourcesForSemantic(SCNGeometrySourceSemanticTexcoord)
-        var tex = chab2!.first as! SCNGeometrySource
+        guard let tex = chab2.first else {return SCNNode()}
         
-        var norcoords : [SCNVector3] = [
+        let norcoords : [SCNVector3] = [
             SCNVector3(x: -0.0, y: -0.0, z: -1.0),
             SCNVector3(x: -0.0, y: -0.0, z: -1.0),
             SCNVector3(x: -0.0, y: -0.0, z: -1.0),
@@ -463,7 +463,7 @@ class GameViewController: UIViewController, SCNSceneRendererDelegate {
             SCNVector3(x: -0.0, y: 1.0, z: 0.0),
             SCNVector3(x: -0.0, y: 1.0, z: 0.0)
         ]
-        var nor = SCNGeometrySource(data: NSData(bytes: norcoords, length:12*24), semantic: SCNGeometrySourceSemanticNormal, vectorCount: 24, floatComponents: true, componentsPerVector: 3, bytesPerComponent: 4, dataOffset: 0, dataStride: 0)
+        let nor = SCNGeometrySource(data: NSData(bytes: norcoords, length:12*24), semantic: SCNGeometrySourceSemanticNormal, vectorCount: 24, floatComponents: true, componentsPerVector: 3, bytesPerComponent: 4, dataOffset: 0, dataStride: 0)
         
         let geom = SCNGeometry(sources: [vec,nor,tex], elements: [el])
         let cubeNode = SCNNode(geometry: geom)
@@ -483,13 +483,7 @@ class GameViewController: UIViewController, SCNSceneRendererDelegate {
         return true
     }
     
-    override func supportedInterfaceOrientations() -> Int {
-        if UIDevice.currentDevice().userInterfaceIdiom == .Phone {
-            return Int(UIInterfaceOrientationMask.AllButUpsideDown.rawValue)
-        } else {
-            return Int(UIInterfaceOrientationMask.All.rawValue)
-        }
-    }
+    
     
     override func didReceiveMemoryWarning() {
         super.didReceiveMemoryWarning()

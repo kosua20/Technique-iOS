@@ -1,4 +1,3 @@
-
 varying vec3 normal;
 uniform vec2 size;
 

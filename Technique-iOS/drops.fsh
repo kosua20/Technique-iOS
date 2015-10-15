@@ -1,4 +1,3 @@
-#extension GL_OES_standard_derivatives : enable
 
 uniform sampler2D colorSampler;
 uniform sampler2D normalSampler;

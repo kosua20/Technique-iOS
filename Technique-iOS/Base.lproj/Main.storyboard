@@ -1,7 +1,8 @@
 <?xml version="1.0" encoding="UTF-8" standalone="no"?>
-<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="7706" systemVersion="14E46" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" initialViewController="BV1-FR-VrT">
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="8191" systemVersion="15A284" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" initialViewController="BV1-FR-VrT">
     <dependencies>
-        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="7703"/>
+        <deployment identifier="iOS"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="8154"/>
         <capability name="Constraints to layout margins" minToolsVersion="6.0"/>
     </dependencies>
     <scenes>
@@ -17,12 +18,14 @@
                         <rect key="frame" x="0.0" y="0.0" width="600" height="600"/>
                         <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                         <subviews>
-                            <sceneKitView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" jitteringEnabled="YES" translatesAutoresizingMaskIntoConstraints="NO" id="m5l-7O-czh">
+                            <sceneKitView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" jitteringEnabled="YES" preferredRenderingAPI="2" translatesAutoresizingMaskIntoConstraints="NO" id="m5l-7O-czh">
                                 <rect key="frame" x="0.0" y="0.0" width="600" height="600"/>
+                                <animations/>
                                 <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                             </sceneKitView>
                             <segmentedControl opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="top" segmentControlStyle="plain" selectedSegmentIndex="0" translatesAutoresizingMaskIntoConstraints="NO" id="0xk-d8-nCP">
-                                <rect key="frame" x="236.5" y="534" width="123" height="29"/>
+                                <rect key="frame" x="237.5" y="534" width="121" height="29"/>
+                                <animations/>
                                 <segments>
                                     <segment title="First"/>
                                     <segment title="Second"/>
@@ -33,12 +36,13 @@
                                 </connections>
                             </segmentedControl>
                         </subviews>
+                        <animations/>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                         <constraints>
                             <constraint firstItem="Uxm-aI-ued" firstAttribute="top" secondItem="m5l-7O-czh" secondAttribute="bottom" id="3Hl-Sg-0n2"/>
-                            <constraint firstAttribute="trailingMargin" secondItem="m5l-7O-czh" secondAttribute="trailing" constant="-16" id="6eX-jY-SVQ"/>
+                            <constraint firstAttribute="trailingMargin" secondItem="m5l-7O-czh" secondAttribute="trailing" constant="-20" id="6eX-jY-SVQ"/>
                             <constraint firstItem="m5l-7O-czh" firstAttribute="top" secondItem="ItB-Bb-Wme" secondAttribute="topMargin" id="XGS-hI-rFT"/>
-                            <constraint firstItem="m5l-7O-czh" firstAttribute="leading" secondItem="ItB-Bb-Wme" secondAttribute="leadingMargin" constant="-16" id="Y77-WD-bpP"/>
+                            <constraint firstItem="m5l-7O-czh" firstAttribute="leading" secondItem="ItB-Bb-Wme" secondAttribute="leadingMargin" constant="-20" id="Y77-WD-bpP"/>
                             <constraint firstItem="Uxm-aI-ued" firstAttribute="top" secondItem="0xk-d8-nCP" secondAttribute="bottom" constant="38" id="lAl-8q-40e"/>
                             <constraint firstAttribute="centerX" secondItem="0xk-d8-nCP" secondAttribute="centerX" constant="2" id="p3X-G9-YJ0"/>
                         </constraints>
