@@ -96,7 +96,7 @@ extension SCNVector3
 /**
  * Increments a SCNVector3 with the value of another.
  */
- func += (inout left: SCNVector3, right: SCNVector3) {
+func += ( left: inout SCNVector3, right: SCNVector3) {
     left = left + right
 }
 
@@ -110,7 +110,7 @@ extension SCNVector3
 /**
  * Decrements a SCNVector3 with the value of another.
  */
- func -= (inout left: SCNVector3, right: SCNVector3) {
+func -= ( left: inout SCNVector3, right: SCNVector3) {
     left = left - right
 }
 
@@ -124,7 +124,7 @@ extension SCNVector3
 /**
  * Multiplies a SCNVector3 with another.
  */
- func *= (inout left: SCNVector3, right: SCNVector3) {
+func *= ( left: inout SCNVector3, right: SCNVector3) {
     left = left * right
 }
 
@@ -139,7 +139,7 @@ func * (vector: SCNVector3, scalar: Float) -> SCNVector3 {
 /**
  * Multiplies the x and y fields of a SCNVector3 with the same scalar value.
  */
- func *= (inout vector: SCNVector3, scalar: Float) {
+func *= ( vector: inout SCNVector3, scalar: Float) {
     vector = vector * scalar
 }
 
@@ -153,7 +153,7 @@ func * (vector: SCNVector3, scalar: Float) -> SCNVector3 {
 /**
  * Divides a SCNVector3 by another.
  */
-func /= (inout left: SCNVector3, right: SCNVector3) {
+func /= ( left: inout SCNVector3, right: SCNVector3) {
     left = left / right
 }
 
@@ -168,14 +168,14 @@ func /= (inout left: SCNVector3, right: SCNVector3) {
 /**
  * Divides the x, y and z of a SCNVector3 by the same scalar value.
  */
-func /= (inout vector: SCNVector3, scalar: Float) {
+func /= ( vector: inout SCNVector3, scalar: Float) {
     vector = vector / scalar
 }
 
 /**
  * Negate a vector
  */
-func SCNVector3Negate(vector: SCNVector3) -> SCNVector3 {
+func SCNVector3Negate(_ vector: SCNVector3) -> SCNVector3 {
     return vector * -1
 }
 
@@ -190,43 +190,43 @@ func SCNVector3Length(vector: SCNVector3) -> Float
 /**
  * Returns the distance between two SCNVector3 vectors
  */
-func SCNVector3Distance(vectorStart: SCNVector3, vectorEnd: SCNVector3) -> Float {
-    return SCNVector3Length(vectorEnd - vectorStart)
+func SCNVector3Distance(_ vectorStart: SCNVector3, vectorEnd: SCNVector3) -> Float {
+	return SCNVector3Length(vector: vectorEnd - vectorStart)
 }
 
 /**
  * Returns the distance between two SCNVector3 vectors
  */
-func SCNVector3Normalize(vector: SCNVector3) -> SCNVector3 {
-    return vector / SCNVector3Length(vector)
+func SCNVector3Normalize(_ vector: SCNVector3) -> SCNVector3 {
+	return vector / SCNVector3Length(vector: vector)
 }
 
 /**
  * Calculates the dot product between two SCNVector3 vectors
  */
-func SCNVector3DotProduct(left: SCNVector3, right: SCNVector3) -> Float {
+func SCNVector3DotProduct(_ left: SCNVector3, right: SCNVector3) -> Float {
     return left.x * right.x + left.y * right.y + left.z * right.z
 }
 
 /**
  * Calculates the cross product between two SCNVector3 vectors
  */
-func SCNVector3CrossProduct(left: SCNVector3, right: SCNVector3) -> SCNVector3 {
+func SCNVector3CrossProduct(_ left: SCNVector3, right: SCNVector3) -> SCNVector3 {
     return SCNVector3Make(left.y * right.z - left.z * right.y, left.z * right.x - left.x * right.z, left.x * right.y - left.y * right.x)
 }
 
 /**
  * Calculates the SCNVector from lerping between two SCNVector3 vectors
  */
-func SCNVector3Lerp(vectorStart: SCNVector3, vectorEnd: SCNVector3, t: Float) -> SCNVector3 {
+func SCNVector3Lerp(_ vectorStart: SCNVector3, vectorEnd: SCNVector3, t: Float) -> SCNVector3 {
     return SCNVector3Make(vectorStart.x + ((vectorEnd.x - vectorStart.x) * t), vectorStart.y + ((vectorEnd.y - vectorStart.y) * t), vectorStart.z + ((vectorEnd.z - vectorStart.z) * t))
 }
 
 /**
  * Project the vector, vectorToProject, onto the vector, projectionVector.
  */
-func SCNVector3Project(vectorToProject: SCNVector3, projectionVector: SCNVector3) -> SCNVector3 {
-    let scale: Float = SCNVector3DotProduct(projectionVector, right: vectorToProject) / SCNVector3DotProduct(projectionVector, right: projectionVector)
+func SCNVector3Project(_ vectorToProject: SCNVector3, projectionVector: SCNVector3) -> SCNVector3 {
+	let scale: Float = SCNVector3DotProduct(projectionVector, right: vectorToProject) / SCNVector3DotProduct(projectionVector, right: projectionVector)
     let v: SCNVector3 = projectionVector * scale
     return v
 }

@@ -30,23 +30,12 @@
 		F4EF9B011B596D7A002887C4 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = F4EF9AFF1B596D7A002887C4 /* Main.storyboard */; };
 		F4EF9B031B596D7A002887C4 /* Images.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = F4EF9B021B596D7A002887C4 /* Images.xcassets */; };
 		F4EF9B061B596D7A002887C4 /* LaunchScreen.xib in Resources */ = {isa = PBXBuildFile; fileRef = F4EF9B041B596D7A002887C4 /* LaunchScreen.xib */; };
-		F4EF9B121B596D7A002887C4 /* Technique_iOSTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = F4EF9B111B596D7A002887C4 /* Technique_iOSTests.swift */; };
 		F4EF9B1D1B596F52002887C4 /* mirror_technique.plist in Resources */ = {isa = PBXBuildFile; fileRef = F4EF9B1C1B596F52002887C4 /* mirror_technique.plist */; };
 		F4EF9B201B59721E002887C4 /* mirror_mix.vsh in Resources */ = {isa = PBXBuildFile; fileRef = F4EF9B1E1B59721E002887C4 /* mirror_mix.vsh */; };
 		F4EF9B211B59721E002887C4 /* mirror_mix.fsh in Resources */ = {isa = PBXBuildFile; fileRef = F4EF9B1F1B59721E002887C4 /* mirror_mix.fsh */; };
 		F4EF9B241B59774D002887C4 /* sobel_2.fsh in Resources */ = {isa = PBXBuildFile; fileRef = F4EF9B221B59774D002887C4 /* sobel_2.fsh */; };
 		F4EF9B251B59774D002887C4 /* sobel_2.vsh in Resources */ = {isa = PBXBuildFile; fileRef = F4EF9B231B59774D002887C4 /* sobel_2.vsh */; };
 /* End PBXBuildFile section */
-
-/* Begin PBXContainerItemProxy section */
-		F4EF9B0C1B596D7A002887C4 /* PBXContainerItemProxy */ = {
-			isa = PBXContainerItemProxy;
-			containerPortal = F4EF9AEC1B596D79002887C4 /* Project object */;
-			proxyType = 1;
-			remoteGlobalIDString = F4EF9AF31B596D79002887C4;
-			remoteInfo = "Technique-iOS";
-		};
-/* End PBXContainerItemProxy section */
 
 /* Begin PBXFileReference section */
 		F4029D981B6015F100435DF2 /* sobel_technique.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = sobel_technique.plist; sourceTree = "<group>"; };
@@ -60,7 +49,6 @@
 		F45319951B612184003DBC62 /* ssao_normals.vsh */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.glsl; path = ssao_normals.vsh; sourceTree = "<group>"; };
 		F453199A1B612246003DBC62 /* noise_map.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = noise_map.png; sourceTree = "<group>"; };
 		F49289761B5FB9C000770F95 /* normal_water.jpg */ = {isa = PBXFileReference; lastKnownFileType = image.jpeg; path = normal_water.jpg; sourceTree = "<group>"; };
-		F49289781B5FC2B000770F95 /* PlaygroundTechnique.playground */ = {isa = PBXFileReference; lastKnownFileType = file.playground; name = PlaygroundTechnique.playground; path = ../../PlaygroundTechnique.playground; sourceTree = "<group>"; };
 		F4B287C41B664C990078337F /* drops_technique.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = drops_technique.plist; sourceTree = "<group>"; };
 		F4B287C51B664C990078337F /* drops.fsh */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.glsl; path = drops.fsh; sourceTree = "<group>"; };
 		F4B287C61B664C990078337F /* drops.vsh */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.glsl; path = drops.vsh; sourceTree = "<group>"; };
@@ -75,7 +63,6 @@
 		F4EF9B001B596D7A002887C4 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Main.storyboard; sourceTree = "<group>"; };
 		F4EF9B021B596D7A002887C4 /* Images.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Images.xcassets; sourceTree = "<group>"; };
 		F4EF9B051B596D7A002887C4 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.xib; name = Base; path = Base.lproj/LaunchScreen.xib; sourceTree = "<group>"; };
-		F4EF9B0B1B596D7A002887C4 /* Technique-iOSTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = "Technique-iOSTests.xctest"; sourceTree = BUILT_PRODUCTS_DIR; };
 		F4EF9B101B596D7A002887C4 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		F4EF9B111B596D7A002887C4 /* Technique_iOSTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Technique_iOSTests.swift; sourceTree = "<group>"; };
 		F4EF9B1C1B596F52002887C4 /* mirror_technique.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = mirror_technique.plist; sourceTree = "<group>"; };
@@ -87,13 +74,6 @@
 
 /* Begin PBXFrameworksBuildPhase section */
 		F4EF9AF11B596D79002887C4 /* Frameworks */ = {
-			isa = PBXFrameworksBuildPhase;
-			buildActionMask = 2147483647;
-			files = (
-			);
-			runOnlyForDeploymentPostprocessing = 0;
-		};
-		F4EF9B081B596D7A002887C4 /* Frameworks */ = {
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
@@ -165,7 +145,6 @@
 			isa = PBXGroup;
 			children = (
 				F4EF9AF41B596D79002887C4 /* Technique-iOS.app */,
-				F4EF9B0B1B596D7A002887C4 /* Technique-iOSTests.xctest */,
 			);
 			name = Products;
 			sourceTree = "<group>";
@@ -176,7 +155,6 @@
 				F4EF9AF91B596D7A002887C4 /* AppDelegate.swift */,
 				F4EF9AFB1B596D7A002887C4 /* art.scnassets */,
 				F4EF9AFD1B596D7A002887C4 /* GameViewController.swift */,
-				F49289781B5FC2B000770F95 /* PlaygroundTechnique.playground */,
 				F453198B1B611FCE003DBC62 /* SSAO */,
 				F453198A1B611FBC003DBC62 /* drops */,
 				F4994CB31B600A6E008A9558 /* mirror */,
@@ -235,24 +213,6 @@
 			productReference = F4EF9AF41B596D79002887C4 /* Technique-iOS.app */;
 			productType = "com.apple.product-type.application";
 		};
-		F4EF9B0A1B596D7A002887C4 /* Technique-iOSTests */ = {
-			isa = PBXNativeTarget;
-			buildConfigurationList = F4EF9B181B596D7A002887C4 /* Build configuration list for PBXNativeTarget "Technique-iOSTests" */;
-			buildPhases = (
-				F4EF9B071B596D7A002887C4 /* Sources */,
-				F4EF9B081B596D7A002887C4 /* Frameworks */,
-				F4EF9B091B596D7A002887C4 /* Resources */,
-			);
-			buildRules = (
-			);
-			dependencies = (
-				F4EF9B0D1B596D7A002887C4 /* PBXTargetDependency */,
-			);
-			name = "Technique-iOSTests";
-			productName = "Technique-iOSTests";
-			productReference = F4EF9B0B1B596D7A002887C4 /* Technique-iOSTests.xctest */;
-			productType = "com.apple.product-type.bundle.unit-test";
-		};
 /* End PBXNativeTarget section */
 
 /* Begin PBXProject section */
@@ -265,10 +225,7 @@
 				TargetAttributes = {
 					F4EF9AF31B596D79002887C4 = {
 						CreatedOnToolsVersion = 6.4;
-					};
-					F4EF9B0A1B596D7A002887C4 = {
-						CreatedOnToolsVersion = 6.4;
-						TestTargetID = F4EF9AF31B596D79002887C4;
+						DevelopmentTeam = MM696H2U5V;
 					};
 				};
 			};
@@ -286,7 +243,6 @@
 			projectRoot = "";
 			targets = (
 				F4EF9AF31B596D79002887C4 /* Technique-iOS */,
-				F4EF9B0A1B596D7A002887C4 /* Technique-iOSTests */,
 			);
 		};
 /* End PBXProject section */
@@ -324,13 +280,6 @@
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
-		F4EF9B091B596D7A002887C4 /* Resources */ = {
-			isa = PBXResourcesBuildPhase;
-			buildActionMask = 2147483647;
-			files = (
-			);
-			runOnlyForDeploymentPostprocessing = 0;
-		};
 /* End PBXResourcesBuildPhase section */
 
 /* Begin PBXSourcesBuildPhase section */
@@ -344,23 +293,7 @@
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
-		F4EF9B071B596D7A002887C4 /* Sources */ = {
-			isa = PBXSourcesBuildPhase;
-			buildActionMask = 2147483647;
-			files = (
-				F4EF9B121B596D7A002887C4 /* Technique_iOSTests.swift in Sources */,
-			);
-			runOnlyForDeploymentPostprocessing = 0;
-		};
 /* End PBXSourcesBuildPhase section */
-
-/* Begin PBXTargetDependency section */
-		F4EF9B0D1B596D7A002887C4 /* PBXTargetDependency */ = {
-			isa = PBXTargetDependency;
-			target = F4EF9AF31B596D79002887C4 /* Technique-iOS */;
-			targetProxy = F4EF9B0C1B596D7A002887C4 /* PBXContainerItemProxy */;
-		};
-/* End PBXTargetDependency section */
 
 /* Begin PBXVariantGroup section */
 		F4EF9AFF1B596D7A002887C4 /* Main.storyboard */ = {
@@ -470,10 +403,12 @@
 			isa = XCBuildConfiguration;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				DEVELOPMENT_TEAM = MM696H2U5V;
 				INFOPLIST_FILE = "Technique-iOS/Info.plist";
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
 				PRODUCT_BUNDLE_IDENTIFIER = "com.simonrodriguez.$(PRODUCT_NAME:rfc1034identifier)";
 				PRODUCT_NAME = "$(TARGET_NAME)";
+				SWIFT_VERSION = 4.0;
 			};
 			name = Debug;
 		};
@@ -481,46 +416,12 @@
 			isa = XCBuildConfiguration;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				DEVELOPMENT_TEAM = MM696H2U5V;
 				INFOPLIST_FILE = "Technique-iOS/Info.plist";
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
 				PRODUCT_BUNDLE_IDENTIFIER = "com.simonrodriguez.$(PRODUCT_NAME:rfc1034identifier)";
 				PRODUCT_NAME = "$(TARGET_NAME)";
-			};
-			name = Release;
-		};
-		F4EF9B191B596D7A002887C4 /* Debug */ = {
-			isa = XCBuildConfiguration;
-			buildSettings = {
-				BUNDLE_LOADER = "$(TEST_HOST)";
-				FRAMEWORK_SEARCH_PATHS = (
-					"$(SDKROOT)/Developer/Library/Frameworks",
-					"$(inherited)",
-				);
-				GCC_PREPROCESSOR_DEFINITIONS = (
-					"DEBUG=1",
-					"$(inherited)",
-				);
-				INFOPLIST_FILE = "Technique-iOSTests/Info.plist";
-				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @loader_path/Frameworks";
-				PRODUCT_BUNDLE_IDENTIFIER = "com.simonrodriguez.$(PRODUCT_NAME:rfc1034identifier)";
-				PRODUCT_NAME = "$(TARGET_NAME)";
-				TEST_HOST = "$(BUILT_PRODUCTS_DIR)/Technique-iOS.app/Technique-iOS";
-			};
-			name = Debug;
-		};
-		F4EF9B1A1B596D7A002887C4 /* Release */ = {
-			isa = XCBuildConfiguration;
-			buildSettings = {
-				BUNDLE_LOADER = "$(TEST_HOST)";
-				FRAMEWORK_SEARCH_PATHS = (
-					"$(SDKROOT)/Developer/Library/Frameworks",
-					"$(inherited)",
-				);
-				INFOPLIST_FILE = "Technique-iOSTests/Info.plist";
-				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @loader_path/Frameworks";
-				PRODUCT_BUNDLE_IDENTIFIER = "com.simonrodriguez.$(PRODUCT_NAME:rfc1034identifier)";
-				PRODUCT_NAME = "$(TARGET_NAME)";
-				TEST_HOST = "$(BUILT_PRODUCTS_DIR)/Technique-iOS.app/Technique-iOS";
+				SWIFT_VERSION = 4.0;
 			};
 			name = Release;
 		};
@@ -541,15 +442,6 @@
 			buildConfigurations = (
 				F4EF9B161B596D7A002887C4 /* Debug */,
 				F4EF9B171B596D7A002887C4 /* Release */,
-			);
-			defaultConfigurationIsVisible = 0;
-			defaultConfigurationName = Release;
-		};
-		F4EF9B181B596D7A002887C4 /* Build configuration list for PBXNativeTarget "Technique-iOSTests" */ = {
-			isa = XCConfigurationList;
-			buildConfigurations = (
-				F4EF9B191B596D7A002887C4 /* Debug */,
-				F4EF9B1A1B596D7A002887C4 /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
 			defaultConfigurationName = Release;
