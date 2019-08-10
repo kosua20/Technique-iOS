@@ -21,7 +21,7 @@
                         <rect key="frame" x="0.0" y="0.0" width="320" height="568"/>
                         <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                         <subviews>
-                            <sceneKitView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" jitteringEnabled="YES" preferredRenderingAPI="2" translatesAutoresizingMaskIntoConstraints="NO" id="m5l-7O-czh">
+                            <sceneKitView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" preferredRenderingAPI="2" translatesAutoresizingMaskIntoConstraints="NO" id="m5l-7O-czh">
                                 <rect key="frame" x="0.0" y="0.0" width="320" height="568"/>
                                 <color key="backgroundColor" red="1" green="1" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                             </sceneKitView>
@@ -39,12 +39,10 @@
                         </subviews>
                         <color key="backgroundColor" red="1" green="1" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                         <constraints>
-                            <constraint firstItem="Uxm-aI-ued" firstAttribute="top" secondItem="m5l-7O-czh" secondAttribute="bottom" id="3Hl-Sg-0n2"/>
+                            <constraint firstItem="Uxm-aI-ued" firstAttribute="top" secondItem="m5l-7O-czh" secondAttribute="bottom" id="Gg9-cf-Xd7"/>
                             <constraint firstAttribute="trailing" secondItem="m5l-7O-czh" secondAttribute="trailing" id="KKR-qS-Ip3"/>
                             <constraint firstItem="m5l-7O-czh" firstAttribute="leading" secondItem="ItB-Bb-Wme" secondAttribute="leading" id="Q5f-qw-YS6"/>
-                            <constraint firstItem="m5l-7O-czh" firstAttribute="top" secondItem="ItB-Bb-Wme" secondAttribute="topMargin" constant="-20" id="XGS-hI-rFT"/>
-                            <constraint firstItem="m5l-7O-czh" firstAttribute="top" secondItem="qR7-Xd-DHn" secondAttribute="bottom" constant="-20" id="eUt-UI-Dn9"/>
-                            <constraint firstItem="Uxm-aI-ued" firstAttribute="top" secondItem="m5l-7O-czh" secondAttribute="bottom" id="eaf-vv-4ve"/>
+                            <constraint firstItem="m5l-7O-czh" firstAttribute="top" secondItem="ItB-Bb-Wme" secondAttribute="top" id="R8a-Ll-kfl"/>
                             <constraint firstItem="Uxm-aI-ued" firstAttribute="top" secondItem="0xk-d8-nCP" secondAttribute="bottom" constant="38" id="lAl-8q-40e"/>
                             <constraint firstAttribute="centerX" secondItem="0xk-d8-nCP" secondAttribute="centerX" constant="2" id="p3X-G9-YJ0"/>
                         </constraints>

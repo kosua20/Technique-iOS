@@ -119,7 +119,8 @@ class GameViewController: UIViewController, SCNSceneRendererDelegate {
         scene1.addChildNode(cube)
         
         //Floor
-        let floor = SCNNode(geometry: SCNPlane(width: 80.0, height: 80.0))
+		
+        let floor = SCNNode(geometry:  SCNPlane(width: 80.0, height: 80.0))
         floor.eulerAngles.x = -3.14159*0.5
         let material2 = SCNMaterial()
 		material2.isDoubleSided = !true
@@ -128,7 +129,31 @@ class GameViewController: UIViewController, SCNSceneRendererDelegate {
         floor.categoryBitMask = 0b10 //2
         floor.position = SCNVector3Make(0.0, 0.0, 0.0)
         scene1.addChildNode(floor)
-        
+		
+		let planeA = SCNPlane(width: 80.0, height: 80.0)
+		planeA.widthSegmentCount = 100
+		planeA.heightSegmentCount = planeA.widthSegmentCount
+		let floor1 = SCNNode(geometry: planeA)
+		
+		floor1.eulerAngles.x = -3.14159*0.5
+		let material3 = SCNMaterial()
+		material3.isDoubleSided = !true
+		material3.diffuse.contents = UIImage(named: "art.scnassets/grid_texture")
+		material3.shaderModifiers = [SCNShaderModifierEntryPoint.geometry:
+			"""
+			float speed=1.5;
+			vec4 WorldPos=_geometry.position;
+			float sine=sin(u_time*speed+WorldPos.x  );
+			float cose=cos(u_time*speed+WorldPos.y);
+			WorldPos.z += 0.2*sine;
+			WorldPos.z += 0.2*cose;
+			_geometry.position = WorldPos;
+			"""
+		]
+		floor1.geometry?.materials = [material3]
+		//floor1.categoryBitMask = 0b0 //2
+		floor1.position = SCNVector3Make(0.0, 0.4, 0.0)
+		//scene1.addChildNode(floor1)
         scene.rootNode.addChildNode(scene1)
         
         
@@ -216,13 +241,7 @@ class GameViewController: UIViewController, SCNSceneRendererDelegate {
         omniLightNode2.light = SCNLight()
 		omniLightNode2.light!.type = SCNLight.LightType.omni
         omniLightNode2.position = SCNVector3(x: 1.0, y: 3.0, z: 3.0)
-        //scene2.addChildNode(omniLightNode2)
-        
-        
-     
-        
-        
-        
+		
 		scene2.isHidden = false
 		scene1.isHidden = true
         scene.rootNode.addChildNode(scene2)
@@ -287,6 +306,7 @@ class GameViewController: UIViewController, SCNSceneRendererDelegate {
                 let technique = SCNTechnique(dictionary:dico)
                 //Need the screen size
 				technique?.setValue(NSValue(cgSize: self.view.frame.size.applying(CGAffineTransform(scaleX: 2.0, y: 2.0))), forKeyPath: "size_screen")
+				
                 techniques["Mirror"] = technique
 				segControl.insertSegment(withTitle: "Mirror", at: segControl.numberOfSegments, animated: false)
             }
@@ -304,6 +324,17 @@ class GameViewController: UIViewController, SCNSceneRendererDelegate {
 				segControl.insertSegment(withTitle: "SSAO", at: segControl.numberOfSegments, animated: false)
             }
         }
+		
+		//Mix
+		if let path = Bundle.main.path(forResource: "mixing_technique", ofType: "plist") {
+			if let dico1 = NSDictionary(contentsOfFile: path)  {
+				let dico = dico1 as! [String : AnyObject]
+				//println(dico)
+				let technique = SCNTechnique(dictionary:dico)
+				techniques["Mixing"] = technique
+				segControl.insertSegment(withTitle: "Mixing", at: segControl.numberOfSegments, animated: false)
+			}
+		}
         
        
         
@@ -319,38 +350,37 @@ class GameViewController: UIViewController, SCNSceneRendererDelegate {
         
     
     }
-    
-    
-    private var received = false
-    func renderer( aRenderer: SCNSceneRenderer, willRenderScene scene: SCNScene, atTime time: TimeInterval) {
-        
-        if(!received){
-            received = true
-            var point = glGetString(0x1F03) as UnsafePointer<UInt8>
-            var array : [Int8] = []
-            while (point[0] != UInt8(ascii:"\0")){
-                array.append(Int8(point[0]))
+	
+	  private var received = false
+	func renderer(_ renderer: SCNSceneRenderer, willRenderScene scene: SCNScene, atTime time: TimeInterval) {
+		if(!received){
+			received = true
+			var point = glGetString(0x1F03) as UnsafePointer<UInt8>
+			var array : [Int8] = []
+			while (point[0] != UInt8(ascii:"\0")){
+				array.append(Int8(point[0]))
 				point = point.advanced(by: 1)
-            }
-            array.append(Int8(0))
+			}
+			array.append(Int8(0))
 			
 			let point2 = String(cString: array)
 			print("Available extensions :\n--------------------------")
 			print(point2.replacingOccurrences(of: " ", with: "\n", options: .caseInsensitive, range: nil))
 			
-        }
-       
-
-    }
+		}
+		
+		
+	}
+	
 
     //-------GESTURES AND CAMERA MOVES--------
     
     @IBAction func selectedTechnique(sender: UISegmentedControl) {
 		let name = sender.titleForSegment(at: sender.selectedSegmentIndex)!
         switch name{
-        case "Mirror","SSAO","Sobel","Drops":
+        case "Mirror","SSAO","Sobel","Drops","Mixing":
             scnView.technique = techniques[name]
-			cube.isHidden = name != "Mirror"
+			cube.isHidden = (name != "Mirror" && name != "Mixing")
 			scene2.isHidden = name != "SSAO"
             
             
@@ -402,11 +432,11 @@ class GameViewController: UIViewController, SCNSceneRendererDelegate {
         let newPosition = previousPosition / scaling
 		camera.position = newPosition.normalized() * clamp(val: newPosition.length(),mini: kZoomMin / kMaxFactor,maxi: kZoomMax * kMaxFactor)
         
-		if ( (newPosition.length() > kZoomMax || newPosition.length() < kZoomMin) && gesture.state == UIGestureRecognizerState.ended){
+		if ( (newPosition.length() > kZoomMax || newPosition.length() < kZoomMin) && gesture.state == UIGestureRecognizer.State.ended){
             //move, then zoom in
             SCNTransaction.begin()
 			SCNTransaction.animationDuration = 0.2
-			SCNTransaction.animationTimingFunction = CAMediaTimingFunction(name: kCAMediaTimingFunctionDefault)
+			SCNTransaction.animationTimingFunction = CAMediaTimingFunction(name: CAMediaTimingFunctionName.default)
 			camera.position = newPosition.normalized() * clamp(val: newPosition.length(),mini: kZoomMin,maxi: kZoomMax)
             SCNTransaction.commit()
             

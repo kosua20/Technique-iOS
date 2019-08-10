@@ -22,4 +22,5 @@ void main() {
         //else we show the scene
         gl_FragColor = texture2D(sampler_color_scene,uv);
     }
+	
 }

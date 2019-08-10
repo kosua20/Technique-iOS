@@ -10,6 +10,13 @@
 		F4029D991B6015F100435DF2 /* sobel_technique.plist in Resources */ = {isa = PBXBuildFile; fileRef = F4029D981B6015F100435DF2 /* sobel_technique.plist */; };
 		F4029D9C1B60169F00435DF2 /* sobel_1.fsh in Resources */ = {isa = PBXBuildFile; fileRef = F4029D9A1B60169F00435DF2 /* sobel_1.fsh */; };
 		F4029D9D1B60169F00435DF2 /* sobel_1.vsh in Resources */ = {isa = PBXBuildFile; fileRef = F4029D9B1B60169F00435DF2 /* sobel_1.vsh */; };
+		F44F161522FEC7110052C365 /* mixing_technique.plist in Resources */ = {isa = PBXBuildFile; fileRef = F44F160E22FEC7100052C365 /* mixing_technique.plist */; };
+		F44F161622FEC7110052C365 /* mixing_1.fsh in Resources */ = {isa = PBXBuildFile; fileRef = F44F160F22FEC7100052C365 /* mixing_1.fsh */; };
+		F44F161722FEC7110052C365 /* mixing_1.vsh in Resources */ = {isa = PBXBuildFile; fileRef = F44F161022FEC7100052C365 /* mixing_1.vsh */; };
+		F44F161822FEC7110052C365 /* mixing_3.fsh in Resources */ = {isa = PBXBuildFile; fileRef = F44F161122FEC7100052C365 /* mixing_3.fsh */; };
+		F44F161922FEC7110052C365 /* mixing_2.fsh in Resources */ = {isa = PBXBuildFile; fileRef = F44F161222FEC7100052C365 /* mixing_2.fsh */; };
+		F44F161A22FEC7110052C365 /* mixing_3.vsh in Resources */ = {isa = PBXBuildFile; fileRef = F44F161322FEC7100052C365 /* mixing_3.vsh */; };
+		F44F161B22FEC7110052C365 /* mixing_2.vsh in Resources */ = {isa = PBXBuildFile; fileRef = F44F161422FEC7100052C365 /* mixing_2.vsh */; };
 		F4503C631B66B364009CA686 /* normal_map.jpg in Resources */ = {isa = PBXBuildFile; fileRef = F4503C621B66B364009CA686 /* normal_map.jpg */; };
 		F45319911B61200D003DBC62 /* ssao_technique.plist in Resources */ = {isa = PBXBuildFile; fileRef = F453198E1B61200D003DBC62 /* ssao_technique.plist */; };
 		F45319961B612184003DBC62 /* ssao_ao.fsh in Resources */ = {isa = PBXBuildFile; fileRef = F45319921B612184003DBC62 /* ssao_ao.fsh */; };
@@ -41,6 +48,13 @@
 		F4029D981B6015F100435DF2 /* sobel_technique.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = sobel_technique.plist; sourceTree = "<group>"; };
 		F4029D9A1B60169F00435DF2 /* sobel_1.fsh */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.glsl; path = sobel_1.fsh; sourceTree = "<group>"; };
 		F4029D9B1B60169F00435DF2 /* sobel_1.vsh */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.glsl; path = sobel_1.vsh; sourceTree = "<group>"; };
+		F44F160E22FEC7100052C365 /* mixing_technique.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = mixing_technique.plist; sourceTree = "<group>"; };
+		F44F160F22FEC7100052C365 /* mixing_1.fsh */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.glsl; path = mixing_1.fsh; sourceTree = "<group>"; };
+		F44F161022FEC7100052C365 /* mixing_1.vsh */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.glsl; path = mixing_1.vsh; sourceTree = "<group>"; };
+		F44F161122FEC7100052C365 /* mixing_3.fsh */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.glsl; path = mixing_3.fsh; sourceTree = "<group>"; };
+		F44F161222FEC7100052C365 /* mixing_2.fsh */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.glsl; path = mixing_2.fsh; sourceTree = "<group>"; };
+		F44F161322FEC7100052C365 /* mixing_3.vsh */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.glsl; path = mixing_3.vsh; sourceTree = "<group>"; };
+		F44F161422FEC7100052C365 /* mixing_2.vsh */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.glsl; path = mixing_2.vsh; sourceTree = "<group>"; };
 		F4503C621B66B364009CA686 /* normal_map.jpg */ = {isa = PBXFileReference; lastKnownFileType = image.jpeg; path = normal_map.jpg; sourceTree = "<group>"; };
 		F453198E1B61200D003DBC62 /* ssao_technique.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = ssao_technique.plist; sourceTree = "<group>"; };
 		F45319921B612184003DBC62 /* ssao_ao.fsh */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.glsl; path = ssao_ao.fsh; sourceTree = "<group>"; };
@@ -93,6 +107,20 @@
 				F4EF9B221B59774D002887C4 /* sobel_2.fsh */,
 			);
 			name = sobel;
+			sourceTree = "<group>";
+		};
+		F44F161C22FEC7150052C365 /* mixing */ = {
+			isa = PBXGroup;
+			children = (
+				F44F160F22FEC7100052C365 /* mixing_1.fsh */,
+				F44F161022FEC7100052C365 /* mixing_1.vsh */,
+				F44F161222FEC7100052C365 /* mixing_2.fsh */,
+				F44F161422FEC7100052C365 /* mixing_2.vsh */,
+				F44F161122FEC7100052C365 /* mixing_3.fsh */,
+				F44F161322FEC7100052C365 /* mixing_3.vsh */,
+				F44F160E22FEC7100052C365 /* mixing_technique.plist */,
+			);
+			name = mixing;
 			sourceTree = "<group>";
 		};
 		F453198A1B611FBC003DBC62 /* drops */ = {
@@ -159,6 +187,7 @@
 				F453198A1B611FBC003DBC62 /* drops */,
 				F4994CB31B600A6E008A9558 /* mirror */,
 				F4029D971B6015C800435DF2 /* sobel */,
+				F44F161C22FEC7150052C365 /* mixing */,
 				F4E80E5E1B59B91A0081EFD7 /* SCNVector3Extensions.swift */,
 				F4EF9AFF1B596D7A002887C4 /* Main.storyboard */,
 				F4EF9B021B596D7A002887C4 /* Images.xcassets */,
@@ -234,6 +263,7 @@
 			developmentRegion = English;
 			hasScannedForEncodings = 0;
 			knownRegions = (
+				English,
 				en,
 				Base,
 			);
@@ -257,12 +287,18 @@
 				F4EF9B211B59721E002887C4 /* mirror_mix.fsh in Resources */,
 				F45319971B612184003DBC62 /* ssao_ao.vsh in Resources */,
 				F4B287C71B664C990078337F /* drops_technique.plist in Resources */,
+				F44F161522FEC7110052C365 /* mixing_technique.plist in Resources */,
+				F44F161A22FEC7110052C365 /* mixing_3.vsh in Resources */,
+				F44F161922FEC7110052C365 /* mixing_2.fsh in Resources */,
+				F44F161B22FEC7110052C365 /* mixing_2.vsh in Resources */,
 				F45319991B612184003DBC62 /* ssao_normals.vsh in Resources */,
+				F44F161722FEC7110052C365 /* mixing_1.vsh in Resources */,
 				F4EF9B061B596D7A002887C4 /* LaunchScreen.xib in Resources */,
 				F4EF9B031B596D7A002887C4 /* Images.xcassets in Resources */,
 				F4029D9C1B60169F00435DF2 /* sobel_1.fsh in Resources */,
 				F4029D9D1B60169F00435DF2 /* sobel_1.vsh in Resources */,
 				F4B287C81B664C990078337F /* drops.fsh in Resources */,
+				F44F161822FEC7110052C365 /* mixing_3.fsh in Resources */,
 				F45319981B612184003DBC62 /* ssao_normals.fsh in Resources */,
 				F4B287C91B664C990078337F /* drops.vsh in Resources */,
 				F45319911B61200D003DBC62 /* ssao_technique.plist in Resources */,
@@ -275,6 +311,7 @@
 				F4EF9B201B59721E002887C4 /* mirror_mix.vsh in Resources */,
 				F4EF9B011B596D7A002887C4 /* Main.storyboard in Resources */,
 				F49289771B5FB9C000770F95 /* normal_water.jpg in Resources */,
+				F44F161622FEC7110052C365 /* mixing_1.fsh in Resources */,
 				F4029D991B6015F100435DF2 /* sobel_technique.plist in Resources */,
 				F4ED44671B5D9D8500AD6B62 /* mirror_plane.vsh in Resources */,
 			);
@@ -408,7 +445,7 @@
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
 				PRODUCT_BUNDLE_IDENTIFIER = "com.simonrodriguez.$(PRODUCT_NAME:rfc1034identifier)";
 				PRODUCT_NAME = "$(TARGET_NAME)";
-				SWIFT_VERSION = 4.0;
+				SWIFT_VERSION = 5.0;
 			};
 			name = Debug;
 		};
@@ -421,7 +458,7 @@
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
 				PRODUCT_BUNDLE_IDENTIFIER = "com.simonrodriguez.$(PRODUCT_NAME:rfc1034identifier)";
 				PRODUCT_NAME = "$(TARGET_NAME)";
-				SWIFT_VERSION = 4.0;
+				SWIFT_VERSION = 5.0;
 			};
 			name = Release;
 		};

@@ -219,6 +219,11 @@
 	</dict>
 	<key>symbols</key>
 	<dict>
+		<key>u_time-symbol</key>
+		<dict>
+			<key>semantic</key>
+			<string>time</string>
+		</dict>
 		<key>mvp-symbol</key>
 		<dict>
 			<key>semantic</key>
@@ -228,11 +233,6 @@
 		<dict>
 			<key>semantic</key>
 			<string>normal</string>
-		</dict>
-		<key>u_time-symbol</key>
-		<dict>
-			<key>semantic</key>
-			<string>time</string>
 		</dict>
 		<key>a_position-symbol</key>
 		<dict>
